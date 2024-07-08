@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kante\\Downloads\\Area de Trabajo\\proyecto-sala-de-escape\\proyecto-sala-de-escape\\proyecto-sala-de-escape.csproj",
+      "projectUniqueName": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\proyecto-sala-de-escape.csproj",
       "projectName": "proyecto-sala-de-escape",
-      "projectPath": "C:\\Users\\kante\\Downloads\\Area de Trabajo\\proyecto-sala-de-escape\\proyecto-sala-de-escape\\proyecto-sala-de-escape.csproj",
+      "projectPath": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\proyecto-sala-de-escape.csproj",
       "packagesPath": "C:\\Users\\kante\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kante\\Downloads\\Area de Trabajo\\proyecto-sala-de-escape\\proyecto-sala-de-escape\\obj\\",
+      "outputPath": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kante\\AppData\\Roaming\\NuGet\\NuGet.Config"
