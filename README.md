@@ -1,5 +1,5 @@
 # Proyecto Sala de Escape
-
+https://docs.google.com/document/d/1_iKzYNY3Rxie7IT31_GE2iFMD-gBtUENCQu3CT_fJsg/edit?usp=sharing
 ## Descripción
 Bienvenidos al repositorio del proyecto de Sala de Escape desarrollado para la materia Taller de Programación 2 de la Escuela ORT sede Almagro. Este proyecto tiene como objetivo crear un juego interactivo de Sala de Escape utilizando ASP.NET Core MVC. Los jugadores deberán resolver acertijos para avanzar entre diferentes salas, siguiendo una narrativa interesante y un diseño visual atractivo.
 
