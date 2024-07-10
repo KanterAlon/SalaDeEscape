@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3AhGj93q5pa2WLorS9AXa4mP3UH/LODT0rTJllZ0l88=",
+  "Hash": "EnUpDFF2gBcke7bbU4SdtkfPBFsJuXn87y80cUWSFy8=",
   "Source": "proyecto-sala-de-escape",
   "BasePath": "_content/proyecto-sala-de-escape",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\95320323\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\background_juego.jpeg",
+      "SourceId": "proyecto-sala-de-escape",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\95320323\\Downloads\\proyecto-sala-de-escape\\wwwroot\\",
+      "BasePath": "_content/proyecto-sala-de-escape",
+      "RelativePath": "img/background_juego.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\background_juego.jpeg"
     },
     {
       "Identity": "C:\\Users\\95320323\\Downloads\\proyecto-sala-de-escape\\wwwroot\\js\\site.js",

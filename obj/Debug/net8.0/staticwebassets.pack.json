@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\95320323\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\background_juego.jpeg",
+      "PackagePath": "staticwebassets\\img\\background_juego.jpeg"
+    },
+    {
       "Id": "C:\\Users\\95320323\\Downloads\\proyecto-sala-de-escape\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
