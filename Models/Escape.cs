@@ -19,7 +19,7 @@ public static class Escape
     }
 
 
-    public static int GetEstadoJuego()
+    public static int ConseguirEstadoJuego()
     {
         return estadoJuego;
     }
