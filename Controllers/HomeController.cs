@@ -1,40 +1,66 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using proyecto_sala_de_escape.Models;
-
-namespace proyecto_sala_de_escape.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    // Action Methods
 
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
+    // 1. Index: Retorna la View Index con la presentación del juego.
     public IActionResult Index()
     {
         return View();
     }
 
-      public IActionResult Tutorial()
+    // 2. Tutorial: Retorna la View Tutorial con la explicación del juego.
+    public IActionResult Tutorial()
     {
         return View();
     }
 
-    public IActionResult Privacy()
+    // 3. Comenzar → Devuelve la view de la próxima Habitación a resolver (Según lo que indique EstadoJuego)
+    public IActionResult Comenzar()
     {
-        return View();
+        int estadoJuego = Escape.GetEstadoJuego();
+        return RedirectToAction("Habitacion", new { sala = estadoJuego });
     }
 
-    
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    // 4. Habitacion(int sala, string clave) → Verifica que la sala que se está respondiendo coincida con EstadoJuego.
+    [HttpPost]
+    public IActionResult Habitacion(int sala, string clave)
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        int estadoJuego = Escape.GetEstadoJuego();
+
+        // Verifica si está resolviendo la sala correcta
+        if (sala != estadoJuego)
+        {
+            return RedirectToAction("Habitacion", new { sala = estadoJuego });
+        }
+
+        // Verifica la clave
+        bool esCorrecta = Escape.ResolverSala(sala, clave);
+        if (esCorrecta)
+        {
+            // Si es la última sala, ir a la vista Victoria
+            if (Escape.EsUltimaSala(sala))
+            {
+                return View("Victoria");
+            }
+            else
+            {
+                // Ir a la siguiente habitación
+                return RedirectToAction("Habitacion", new { sala = sala + 1 });
+            }
+        }
+        else
+        {
+            // Llena el ViewBag.Error y vuelve a la misma vista
+            ViewBag.Error = "La respuesta ingresada es incorrecta.";
+            return View($"Habitacion{sala}");
+        }
     }
 
-
-
+    // Manejo de solicitudes GET para la vista de la habitación
+    public IActionResult Habitacion(int sala)
+    {
+        return View($"Habitacion{sala}");
+    }
 }

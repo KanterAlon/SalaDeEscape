@@ -1,11 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">asASDASDASDdasd</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-<a href="@Url.Action("Tutorial", "Home")">Go to Tutorial</a>
-<img src="/img/background_juego.jpeg", alt="Background">
+<body class="Landing">
+    <div class="content-container">
+        <h1>Namaltofa</h1>
+        <a class="btn btn-primary-custom" href="@Url.Action("Comenzar", "Home")">Comenzar</a>
+        <a class="btn btn-secondary-custom" href="@Url.Action("Tutorial", "Home")">Tutorial</a>
+        <a class="btn btn-default-custom" href="@Url.Action("Creditos", "Home")">Creditos</a>
+    </div>
+</body>

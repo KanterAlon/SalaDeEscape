@@ -1,40 +1,67 @@
-<h1>Escape en el Aeropuerto</h1>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <div class="container">
+        <h1>Escape en el Aeropuerto</h1>
 
-        <section>
+        <!-- Sección: Breve Reseña -->
+        <section class="brief-review">
             <h2>Breve Reseña</h2>
             <p>En "Escape en el Aeropuerto", eres parte de un equipo de pilotos y personal de aviación que debe resolver una serie de enigmas textuales para encontrar y activar el código de despegue antes de que se acabe el tiempo. Tienes 60 minutos para completar la misión y asegurar el despegue del vuelo antes de que ocurra una catástrofe.</p>
         </section>
 
-        <section>
+        <!-- Sección: Imágenes de las Distintas Escenas del Juego -->
+        <section class="game-scenes">
             <h2>Imágenes de las Distintas Escenas del Juego</h2>
             <div class="game-images">
+
+                <!-- Imagen: Introducción -->
                 <div class="game-image">
-                    <img src="~/images/escena_introduccion.jpg" alt="Introducción">
+                    <img src="~/img/test.jpeg" alt="Introducción">
                     <p>Introducción</p>
+                    <div class="hover-text">Los jugadores reciben una misión urgente en el aeropuerto. Deben encontrar y activar un código de despegue antes de que se acabe el tiempo. Encuentran una radio antigua con un mensaje en código Morse que necesitan descifrar para avanzar.</div>
                 </div>
+
+                <!-- Imagen: Enigma Código Morse -->
                 <div class="game-image">
-                    <img src="~/images/escena_codigo-morse.jpg" alt="Enigma Código Morse">
+                    <img src="~/img/test.jpeg" alt="Enigma Código Morse">
                     <p>Enigma Código Morse</p>
+                    <div class="hover-text">Descifran el mensaje en Morse y obtienen una palabra clave que les permite continuar con la misión.</div>
                 </div>
+
+                <!-- Imagen: Enigma Ruta Aérea -->
                 <div class="game-image">
-                    <img src="~/images/escena_mapa-ruta.jpg" alt="Enigma Ruta Aérea">
+                    <img src="~/img/test.jpeg" alt="Enigma Ruta Aérea">
                     <p>Enigma Ruta Aérea</p>
+                    <div class="hover-text">Utilizan un mapa de rutas aéreas para conectar puntos estratégicos en una secuencia correcta, revelando una clave de acceso.</div>
                 </div>
+
+                <!-- Imagen: Enigma Sudoku de Códigos de Vuelo -->
                 <div class="game-image">
-                    <img src="~/images/escena_sudoku.jpg" alt="Enigma Sudoku de Códigos de Vuelo">
+                    <img src="~/img/test.jpeg" alt="Enigma Sudoku de Códigos de Vuelo">
                     <p>Enigma Sudoku de Códigos de Vuelo</p>
+                    <div class="hover-text">Resuelven un Sudoku usando códigos de vuelo, lo que les permite desbloquear una caja fuerte y obtener una parte del código de despegue.</div>
                 </div>
+
+                <!-- Imagen: Enigma Tiempos de Despegue y Aterrizaje -->
                 <div class="game-image">
-                    <img src="~/images/escena_tiempos-despegue.jpg" alt="Enigma Tiempos de Despegue y Aterrizaje">
+                    <img src="~/img/test.jpeg" alt="Enigma Tiempos de Despegue y Aterrizaje">
                     <p>Enigma Tiempos de Despegue y Aterrizaje</p>
+                    <div class="hover-text">Resuelven un rompecabezas de lógica basado en horarios de despegue y aterrizaje para obtener el último dígito del código.</div>
                 </div>
+
+                <!-- Activacion del Codigo -->
                 <div class="game-image">
-                    <img src="~/images/escena_secuencia-colores.jpg" alt="Enigma Secuencia de Colores">
-                    <p>Enigma Secuencia de Colores</p>
-                </div>
-                <div class="game-image">
-                    <img src="~/images/escena_desafio-matematico.jpg" alt="Enigma Acertijo Matemático">
-                    <p>Enigma Acertijo Matemático</p>
+                    <img src="~/img/test.jpeg" alt="Activacion del Codigo">
+                    <p>Activacion del Codigo</p>
+                    <div class="hover-text">Siguen una secuencia de colores y resuelven un acertijo matemático final para obtener la combinación definitiva y activar el código de despegue, asegurando el éxito de la misión.
+
                 </div>
             </div>
-        </section>
+            
+        </div>
+    </section>
+</div>
+</body>

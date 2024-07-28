@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Habitación 1";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="Habitacion">
+        <div class="habitacion-container">
+            <h2>Emergencia en el Aeropuerto</h2>
+            <p>¡Atención, equipo! Tenemos una emergencia en el aeropuerto. Debemos encontrar y activar el código de despegue antes de que el tiempo se acabe. El vuelo 742 debe despegar en una hora o todo el plan de vuelo se verá comprometido. ¡Buena suerte!</p>
+            
+            <!-- Elementos Multimedia -->
+            <div class="multimedia">
+                <img src="~/img/control_center_radio.jpg" alt="Radio del centro de control" class="multimedia-element">
+            </div>
+            
+            <!-- Formulario para descifrar la clave -->
+            <form method="post" action="@Url.Action("Habitacion", "Home", new { sala = 1 })">
+                <input type="text" name="clave" placeholder="Ingresa el número de vuelo" required>
+                <button type="submit">VALIDAR</button>
+            </form>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="error">
+                    <p>@ViewBag.Error</p>
+                </div>
+            }
+</body>
+</html>
