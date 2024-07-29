@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PrimerProyecto.styles.css" asp-append-version="true" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    
-      @if (ViewContext.RouteData.Values["action"].ToString() == "Tutorial" || 
-          ViewContext.RouteData.Values["action"].ToString() == "Creditos")
+    @{
+        var action = ViewContext.RouteData.Values["action"].ToString();
+    }
+
+    @if (action == "Tutorial" || action == "Creditos")
     {
         <a href="@Url.Action("Index", "Home")" class="back-button">
             <div class="back-button-content">
@@ -19,7 +22,7 @@
             </div>
         </a>
     }
-    
+
     @RenderBody()
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -27,11 +30,9 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
-       
-    @if (!(ViewContext.RouteData.Values["action"].ToString() == "Index" || 
-          ViewContext.RouteData.Values["action"].ToString() == "Tutorial" || 
-          ViewContext.RouteData.Values["action"].ToString() == "Creditos"))
-    <footer>
+    @if (action != "Index" && action != "Tutorial" && action != "Creditos")
+    {
+        <footer>
             <div class="footer-content">
                 <button class="btn btn-secondary-custom back-to-home">Volver al Inicio</button>
                 <div class="timer">Tiempo: <span id="timer">01:00</span></div>
@@ -39,25 +40,36 @@
         </footer>
 
         <script>
-            // Inicializar el temporizador a 60 segundos
-            let timeLeft = 60;
-            let timerInterval = setInterval(function() {
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    window.location.href = '@Url.Action("Tiempo", "Home")';
-                } else {
-                    timeLeft--;
-                    let minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
-                    let seconds = String(timeLeft % 60).padStart(2, '0');
-                    document.getElementById('timer').textContent = `${minutes}:${seconds}`;
-                }
-            }, 1000);
-    
-    @if (!(ViewContext.RouteData.Values["action"].ToString() == "Index" || 
-          ViewContext.RouteData.Values["action"].ToString() == "Tutorial" || 
-          ViewContext.RouteData.Values["action"].ToString() == "Creditos"))
-    {
-        <!-- Confirmación para volver al inicio -->
+            $(document).ready(function() {
+                // Inicializar el temporizador a 60 segundos
+                let timeLeft = 60;
+                let timerInterval = setInterval(function() {
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        window.location.href = '@Url.Action("Tiempo", "Home")';
+                    } else {
+                        timeLeft--;
+                        let minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+                        let seconds = String(timeLeft % 60).padStart(2, '0');
+                        $('#timer').text(`${minutes}:${seconds}`);
+                    }
+                }, 1000);
+
+                // Confirmación para volver al inicio
+                $('.back-to-home').click(function() {
+                    $('.confirm-box').removeClass('hidden');
+                });
+
+                $('.confirm-yes').click(function() {
+                    window.location.href = '@Url.Action("Index", "Home")';
+                });
+
+                $('.confirm-no').click(function() {
+                    $('.confirm-box').addClass('hidden');
+                });
+            });
+        </script>
+
         <div class="confirm-box hidden">
             <div class="confirm-content">
                 <p>¿Estás seguro que quieres volver? Perderás todo el progreso.</p>
