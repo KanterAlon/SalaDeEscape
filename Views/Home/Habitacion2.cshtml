@@ -10,39 +10,47 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body class="Habitacion">
-    <div class="habitacion-container">
-        <h2>Enigma del Código Morse</h2>
-        <p>Debes descifrar el mensaje en código Morse para avanzar. ¡Buena suerte!</p>
-        
-        <!-- Elementos Multimedia -->
-        <div class="multimedia">
-            <p>Mensaje en Morse: ".... . .-.. .--."</p>
-        </div>
-        
-        <!-- Formulario para descifrar la clave -->
-        <form method="post" action="@Url.Action("Habitacion", "Home", new { sala = 2 })">
-            <input type="text" name="clave" placeholder="Ingresa el código descifrado" required>
-            <button type="submit">VALIDAR</button>
-        </form>
-
-        <!-- Botones de pistas -->
-        <div class="pistas">
-            <button type="button" onclick="alert('Pista 1: Revisa un diccionario de código Morse para encontrar las letras correspondientes a los puntos y rayas.')">Pista 1</button>
-            <button type="button" onclick="alert('Pista 2: El mensaje se traduce a una palabra en inglés que significa ayuda')">Pista 2</button>
-        </div>
-
-        @if (ViewBag.Error != null)
-        {
-            <div class="error">
-                <p>@ViewBag.Error</p>
+<body>
+    <div class="Habitacion">
+        <div class="habitacion-container">
+            <h2>Enigma del Código Morse</h2>
+            <p>Debes descifrar el mensaje en código Morse para avanzar. ¡Buena suerte!</p>
+            
+            <!-- Elementos Multimedia -->
+            <div class="multimedia">
+                <p>Mensaje en Morse: ".... . .-.. .--."</p>
             </div>
-        }
+            
+            <!-- Formulario para descifrar la clave -->
+            <form method="post" action="@Url.Action("Habitacion", "Home", new { sala = 2 })">
+                <input type="text" name="clave" placeholder="Ingresa el código descifrado" required>
+                <button type="submit">VALIDAR</button>
+            </form>
 
-    
+            @if (ViewBag.Error != null)
+            {
+                <div class="error">
+                    <p>@ViewBag.Error</p>
+                </div>
+            }
+
+            <!-- Confirmación para volver al inicio -->
+            <div class="confirm-box hidden">
+                <div class="confirm-content">
+                    <p>¿Estás seguro que quieres volver? Perderás todo el progreso.</p>
+                    <button class="btn btn-primary-custom confirm-yes">Sí</button>
+                    <button class="btn btn-secondary-custom confirm-no">No</button>
+                </div>
+            </div>
+            <!-- Botones de pistas -->
+            <div class="pistas">
+                <button type="button" onclick="alert('Pista 1: Revisa un diccionario de código Morse para encontrar las letras correspondientes a los puntos y rayas.')">Pista 1</button>
+                <button type="button" onclick="alert('Pista 2: El mensaje se traduce a una palabra en inglés que significa ayuda')">Pista 2</button>
+            </div>
+        </div>
     </div>
 
-    
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -50,15 +58,6 @@
             <div class="timer">Tiempo: <span id="timer">00:00</span></div>
         </div>
     </footer>
-
-    <!-- Confirmación para volver al inicio -->
-    <div class="confirm-box hidden">
-        <div class="confirm-content">
-            <p>¿Estás seguro que quieres volver? Perderás todo el progreso.</p>
-            <button class="btn btn-primary-custom confirm-yes">Sí</button>
-            <button class="btn btn-secondary-custom confirm-no">No</button>
-        </div>
-    </div>
 
     <script>
         // Temporizador

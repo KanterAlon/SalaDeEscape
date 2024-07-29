@@ -33,6 +33,18 @@
                     <p>@ViewBag.Error</p>
                 </div>
             }
+
+            <!-- Confirmación para volver al inicio -->
+            <div class="confirm-box hidden">
+                <div class="confirm-content">
+                    <p>¿Estás seguro que quieres volver? Perderás todo el progreso.</p>
+                    <button class="btn btn-primary-custom confirm-yes">Sí</button>
+                    <button class="btn btn-secondary-custom confirm-no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -40,15 +52,6 @@
             <div class="timer">Tiempo: <span id="timer">00:00</span></div>
         </div>
     </footer>
-
-    <!-- Confirmación para volver al inicio -->
-    <div class="confirm-box hidden">
-        <div class="confirm-content">
-            <p>¿Estás seguro que quieres volver? Perderás todo el progreso.</p>
-            <button class="btn btn-primary-custom confirm-yes">Sí</button>
-            <button class="btn btn-secondary-custom confirm-no">No</button>
-        </div>
-    </div>
 
     <script>
         // Temporizador
