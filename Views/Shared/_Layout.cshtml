@@ -10,6 +10,15 @@
 </head>
 <body>
     
+      @if (ViewContext.RouteData.Values["action"].ToString() == "Tutorial" || 
+          ViewContext.RouteData.Values["action"].ToString() == "Creditos")
+    {
+        <a href="@Url.Action("Index", "Home")" class="back-button">
+            <div class="back-button-content">
+                ←
+            </div>
+        </a>
+    }
     
     @RenderBody()
 
