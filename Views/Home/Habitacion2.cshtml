@@ -23,7 +23,7 @@
             
             <!-- Formulario para descifrar la clave -->
             <form method="post" action="@Url.Action("Habitacion", "Home", new { sala = 2 })">
-                <input type="text" name="clave" placeholder="Ingresa el código descifrado" required>
+                <input type="text" name="clave" placeholder="Ingresa el código descifrado" required autocomplete="off">
                 <button type="submit">VALIDAR</button>
             </form>
 

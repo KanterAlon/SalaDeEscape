@@ -1,0 +1,53 @@
+<body>
+    <div class="Habitacion">
+        <div class="habitacion-container">
+            <h2>Identificación del Avión</h2>
+            <p>Has descubierto que el avión es de color amarillo. Ahora necesitas el código de la aerolínea. Ingresa el nombre de la aerolínea en alfabeto aeronáutico.</p>
+            
+            <!-- Elementos Multimedia -->
+            <div class="multimedia">
+                <img src="~/img/avion_amarillo.jpeg" alt="Avión amarillo" class="multimedia-element">
+            </div>
+            
+            <!-- Formulario para descifrar la clave -->
+            <form method="post" action="@Url.Action("Habitacion", "Home", new { sala = 3 })" autocomplete="off">
+                <input type="text" name="clave" placeholder="Ingresa el nombre de la aerolínea en alfabeto aeronáutico" required autocomplete="off">
+                <button type="submit">VALIDAR</button>
+            </form>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="error">
+                    <p>@ViewBag.Error</p>
+                </div>
+            }
+
+            <!-- Botones de pistas -->
+            <div class="pistas">
+                <button type="button" onclick="mostrarPista1()">Pista 1</button>
+                <button type="button" onclick="mostrarPista2()">Pista 2</button>
+            </div>
+
+            <div id="pista1" class="pista-content">
+                <p>Es una aerolínea low cost estadounidense.</p>
+                <img class="Pista" src="~/img/Alfabeto_Aeronautico_Pista.jpeg" alt="Alfabeto Aeronáutico">
+            </div>
+
+            <div id="pista2" class="pista-content">
+                <p>La aerolínea se llama Spirit.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarPista1() {
+            var pista1 = document.getElementById('pista1');
+            pista1.style.display = pista1.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function mostrarPista2() {
+            var pista2 = document.getElementById('pista2');
+            pista2.style.display = pista2.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>

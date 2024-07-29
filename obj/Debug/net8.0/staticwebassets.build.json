@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3u4vbujqXehWkfMPTSnGMSoz2qnjbioPyXrrWclURJo=",
+  "Hash": "u28c4VVlorcJZ5sxTAX8yZLXCdtheAzsWiN+SociHKY=",
   "Source": "proyecto-sala-de-escape",
   "BasePath": "_content/proyecto-sala-de-escape",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\95320323\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\Alfabeto_Aeronautico_Pista.jpeg",
+      "SourceId": "proyecto-sala-de-escape",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\95320323\\Downloads\\proyecto-sala-de-escape\\wwwroot\\",
+      "BasePath": "_content/proyecto-sala-de-escape",
+      "RelativePath": "img/Alfabeto_Aeronautico_Pista.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Alfabeto_Aeronautico_Pista.jpeg"
     },
     {
       "Identity": "C:\\Users\\95320323\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\Alon.jpg",

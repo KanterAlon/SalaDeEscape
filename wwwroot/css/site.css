@@ -336,3 +336,25 @@ footer {
   transform: translateY(-3px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+.pista-content {
+  display: none;
+}
+.pista-content.active {
+  display: block;
+}
+
+.pista-content {
+  display: none;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);}
+
+
+.pista-content img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
