@@ -31,43 +31,27 @@
     @if (!(ViewContext.RouteData.Values["action"].ToString() == "Index" || 
           ViewContext.RouteData.Values["action"].ToString() == "Tutorial" || 
           ViewContext.RouteData.Values["action"].ToString() == "Creditos"))
-    {
-        <footer>
+    <footer>
             <div class="footer-content">
                 <button class="btn btn-secondary-custom back-to-home">Volver al Inicio</button>
-                <div class="timer">Tiempo: <span id="timer">00:00</span></div>
+                <div class="timer">Tiempo: <span id="timer">01:00</span></div>
             </div>
         </footer>
-    }
-    
-    <script>
-        // Solo iniciar el temporizador en las habitaciones
-        if (!(window.location.pathname.includes("Index") || 
-              window.location.pathname.includes("Tutorial") || 
-              window.location.pathname.includes("Creditos"))) {
-            let startTime = new Date();
-            setInterval(function() {
-                let now = new Date();
-                let elapsedTime = Math.floor((now - startTime) / 1000);
-                let minutes = String(Math.floor(elapsedTime / 60)).padStart(2, '0');
-                let seconds = String(elapsedTime % 60).padStart(2, '0');
-                document.getElementById('timer').textContent = `${minutes}:${seconds}`;
+
+        <script>
+            // Inicializar el temporizador a 60 segundos
+            let timeLeft = 60;
+            let timerInterval = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    window.location.href = '@Url.Action("Tiempo", "Home")';
+                } else {
+                    timeLeft--;
+                    let minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+                    let seconds = String(timeLeft % 60).padStart(2, '0');
+                    document.getElementById('timer').textContent = `${minutes}:${seconds}`;
+                }
             }, 1000);
-            
-            // Confirmación para volver al inicio
-            document.querySelector('.back-to-home').addEventListener('click', function() {
-                document.querySelector('.confirm-box').classList.remove('hidden');
-            });
-
-            document.querySelector('.confirm-yes').addEventListener('click', function() {
-                window.location.href = '@Url.Action("Index", "Home")';
-            });
-
-            document.querySelector('.confirm-no').addEventListener('click', function() {
-                document.querySelector('.confirm-box').classList.add('hidden');
-            });
-        }
-    </script>
     
     @if (!(ViewContext.RouteData.Values["action"].ToString() == "Index" || 
           ViewContext.RouteData.Values["action"].ToString() == "Tutorial" || 

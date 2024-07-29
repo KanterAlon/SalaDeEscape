@@ -72,4 +72,19 @@ public class HomeController : Controller
     {
         return View($"Habitacion{sala}");
     }
+       // Acción para manejar el tiempo agotado
+    public IActionResult Tiempo()
+    {
+        return View();
+    }
+
+    // Acción para agregar 30 segundos más
+    [HttpPost]
+    public IActionResult AgregarTiempo()
+    {
+        // Lógica para agregar 30 segundos más
+        // Por simplicidad, simplemente redirigimos a la última habitación
+        int estadoJuego = Escape.GetEstadoJuego();
+        return RedirectToAction("Habitacion", new { sala = estadoJuego });
+    }
 }

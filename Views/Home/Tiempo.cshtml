@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Tiempo Agotado";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="Habitacion">
+        <div class="habitacion-container">
+            <h2>¡Se acabó el tiempo!</h2>
+            <p>El tiempo ha terminado. ¿Qué quieres hacer?</p>
+            <form method="post" action="@Url.Action("AgregarTiempo", "Home")">
+                <button type="submit" class="btn btn-primary-custom">Dame 30 segundos más!</button>
+            </form>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-secondary-custom">Comenzar desde el principio</a>
+        </div>
+    </div>
+</body>
+</html>
