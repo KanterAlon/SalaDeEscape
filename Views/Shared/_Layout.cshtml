@@ -9,27 +9,7 @@
     <link rel="stylesheet" href="~/PrimerProyecto.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PrimerProyecto</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    
     
     @RenderBody()
 
@@ -37,5 +17,61 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+       
+    @if (!(ViewContext.RouteData.Values["action"].ToString() == "Index" || 
+          ViewContext.RouteData.Values["action"].ToString() == "Tutorial" || 
+          ViewContext.RouteData.Values["action"].ToString() == "Creditos"))
+    {
+        <footer>
+            <div class="footer-content">
+                <button class="btn btn-secondary-custom back-to-home">Volver al Inicio</button>
+                <div class="timer">Tiempo: <span id="timer">00:00</span></div>
+            </div>
+        </footer>
+    }
+    
+    <script>
+        // Solo iniciar el temporizador en las habitaciones
+        if (!(window.location.pathname.includes("Index") || 
+              window.location.pathname.includes("Tutorial") || 
+              window.location.pathname.includes("Creditos"))) {
+            let startTime = new Date();
+            setInterval(function() {
+                let now = new Date();
+                let elapsedTime = Math.floor((now - startTime) / 1000);
+                let minutes = String(Math.floor(elapsedTime / 60)).padStart(2, '0');
+                let seconds = String(elapsedTime % 60).padStart(2, '0');
+                document.getElementById('timer').textContent = `${minutes}:${seconds}`;
+            }, 1000);
+            
+            // Confirmación para volver al inicio
+            document.querySelector('.back-to-home').addEventListener('click', function() {
+                document.querySelector('.confirm-box').classList.remove('hidden');
+            });
+
+            document.querySelector('.confirm-yes').addEventListener('click', function() {
+                window.location.href = '@Url.Action("Index", "Home")';
+            });
+
+            document.querySelector('.confirm-no').addEventListener('click', function() {
+                document.querySelector('.confirm-box').classList.add('hidden');
+            });
+        }
+    </script>
+    
+    @if (!(ViewContext.RouteData.Values["action"].ToString() == "Index" || 
+          ViewContext.RouteData.Values["action"].ToString() == "Tutorial" || 
+          ViewContext.RouteData.Values["action"].ToString() == "Creditos"))
+    {
+        <!-- Confirmación para volver al inicio -->
+        <div class="confirm-box hidden">
+            <div class="confirm-content">
+                <p>¿Estás seguro que quieres volver? Perderás todo el progreso.</p>
+                <button class="btn btn-primary-custom confirm-yes">Sí</button>
+                <button class="btn btn-secondary-custom confirm-no">No</button>
+            </div>
+        </div>
+    }
 </body>
 </html>
