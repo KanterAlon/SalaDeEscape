@@ -16,14 +16,23 @@ public class HomeController : Controller
         return View();
     }
 
+
     // 3. Comenzar → Devuelve la view de la próxima Habitación a resolver (Según lo que indique EstadoJuego)
-    public IActionResult Comenzar()
+  public IActionResult Comenzar()
     {
+        Escape.ReiniciarJuego(); // Reiniciar el juego antes de comenzar
         int estadoJuego = Escape.GetEstadoJuego();
         return RedirectToAction("Habitacion", new { sala = estadoJuego });
     }
 
-    // 4. Habitacion(int sala, string clave) → Verifica que la sala que se está respondiendo coincida con EstadoJuego.
+    
+    // 4. Creditos: Retorna la View Creditos con lis credutis del juego.
+        public IActionResult Creditos()
+    {
+        return View();
+    }
+
+    // 5. Habitacion(int sala, string clave) → Verifica que la sala que se está respondiendo coincida con EstadoJuego.
     [HttpPost]
     public IActionResult Habitacion(int sala, string clave)
     {

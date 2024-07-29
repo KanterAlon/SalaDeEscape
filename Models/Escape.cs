@@ -8,8 +8,8 @@ public static class Escape
     {
         incognitasSalas = new string[]
         {
-            "742", // Clave para la primera sala
-            "HELP", // Reemplazar con las claves reales de cada sala
+            "742",  // Clave para la primera sala
+            "HELP", // Clave para la segunda sala
             "clave3",
             // Agregar tantas claves como salas existan
         };
