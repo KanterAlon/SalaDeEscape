@@ -1,0 +1,165 @@
+@{
+    ViewData["Title"] = "Habitación 5";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .panel-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .light {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+        .red { background-color: red; }
+        .green { background-color: green; }
+        .blue { background-color: blue; }
+        .yellow { background-color: yellow; }
+        .hidden { display: none; }
+        .disabled { pointer-events: none; }
+        .active {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="Habitacion">
+        <div class="habitacion-container">
+            <h2>Secuencia de Luces de la Cabina</h2>
+            <p>Como parte del equipo de pilotos, debes seguir la secuencia de luces en el panel de control de la cabina para asegurar un aterrizaje seguro. Observa la secuencia de colores y repítela en el mismo orden. ¡Buena suerte!</p>
+            
+            <!-- Panel de Control -->
+            <div id="panelControl" class="panel-control">
+                <div id="red" class="light red" onclick="playerInput('red')"></div>
+                <div id="green" class="light green" onclick="playerInput('green')"></div>
+                <div id="blue" class="light blue" onclick="playerInput('blue')"></div>
+                <div id="yellow" class="light yellow" onclick="playerInput('yellow')"></div>
+            </div>
+
+            <!-- Contador -->
+            <div id="counter" class="counter">Nivel: 0 - Repeticiones restantes: 0</div>
+
+            <!-- Botón para comenzar -->
+            <button id="startButton" onclick="startGame()">Comenzar</button>
+ 
+            <button id="skipButton" onclick="skipToLevel9()">Saltar al Nivel 9</button>
+            
+            @if (ViewBag.Error != null)
+            {
+                <div class="error">
+                    <p>@ViewBag.Error</p>
+                </div>
+            }
+
+            <!-- Botones de pistas -->
+            <div class="pistas">
+                <button type="button" onclick="alert('Pista: Observa la secuencia de colores y repítela correctamente.')">Pista</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const colors = ['red', 'green', 'blue', 'yellow'];
+        let sequence = [];
+        let playerSequence = [];
+        let level = 0;
+        const maxLevel = 10;
+
+        function startGame() {
+            sequence = [];
+            playerSequence = [];
+            level = 0;
+            nextLevel();
+        }
+
+        function skipToLevel9() {
+            sequence = [];
+            playerSequence = [];
+            level = 8; // Set to 8 so the next level will be 9
+            nextLevel();
+        }
+
+        function nextLevel() {
+            if (level >= maxLevel) {
+                window.location.href = '@Url.Action("Habitacion", "Home", new { sala = 6 })';
+                return;
+            }
+            level++;
+            playerSequence = [];
+            sequence.push(colors[Math.floor(Math.random() * 4)]);
+            updateCounter();
+            displaySequence();
+        }
+
+        function displaySequence() {
+            let delay = 0;
+            sequence.forEach((color, index) => {
+                setTimeout(() => {
+                    activateLight(color);
+                    setTimeout(() => {
+                        deactivateLight(color);
+                    }, 700);
+                }, 1000 * (index + 1));
+            });
+        }
+
+        function activateLight(color) {
+            const light = document.getElementById(color);
+            light.classList.add('active');
+            light.classList.add('disabled');
+        }
+
+        function deactivateLight(color) {
+            const light = document.getElementById(color);
+            light.classList.remove('active');
+            light.classList.remove('disabled');
+        }
+
+        function playerInput(color) {
+            playerSequence.push(color);
+            const currentMove = playerSequence.length - 1;
+            activateLight(color);
+            setTimeout(() => {
+                deactivateLight(color);
+            }, 300);
+            if (playerSequence[currentMove] !== sequence[currentMove]) {
+                alert('¡Incorrecto! Intenta de nuevo.');
+                startGame();
+                return;
+            }
+            if (playerSequence.length === sequence.length) {
+                setTimeout(() => {
+                    nextLevel();
+                }, 1000);
+            }
+            updateCounter();
+        }
+
+        function updateCounter() {
+            const counter = document.getElementById('counter');
+            const remaining = sequence.length - playerSequence.length;
+            counter.textContent = `Nivel: ${level} - Repeticiones restantes: ${remaining}`;
+        }
+    </script>
+</body>
+</html>

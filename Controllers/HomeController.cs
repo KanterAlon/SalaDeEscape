@@ -16,18 +16,16 @@ public class HomeController : Controller
         return View();
     }
 
-
     // 3. Comenzar → Devuelve la view de la próxima Habitación a resolver (Según lo que indique EstadoJuego)
-  public IActionResult Comenzar()
+    public IActionResult Comenzar()
     {
         Escape.ReiniciarJuego(); // Reiniciar el juego antes de comenzar
         int estadoJuego = Escape.GetEstadoJuego();
         return RedirectToAction("Habitacion", new { sala = estadoJuego });
     }
 
-    
-    // 4. Creditos: Retorna la View Creditos con lis credutis del juego.
-        public IActionResult Creditos()
+    // 4. Creditos: Retorna la View Creditos con los créditos del juego.
+    public IActionResult Creditos()
     {
         return View();
     }
@@ -72,19 +70,19 @@ public class HomeController : Controller
     {
         return View($"Habitacion{sala}");
     }
-       // Acción para manejar el tiempo agotado
+
+    // Acción para manejar el tiempo agotado
     public IActionResult Tiempo()
     {
         return View();
     }
 
-    // Acción para agregar 30 segundos más
+    // Acción para añadir más tiempo al temporizador
     [HttpPost]
     public IActionResult AgregarTiempo()
     {
-        // Lógica para agregar 30 segundos más
-        // Por simplicidad, simplemente redirigimos a la última habitación
-        int estadoJuego = Escape.GetEstadoJuego();
-        return RedirectToAction("Habitacion", new { sala = estadoJuego });
+        // Añadir 1 minuto al tiempo restante (esto se haría en el frontend, aquí simplemente redirigimos)
+        var lastRoom = HttpContext.Session.GetString("lastRoom") ?? "1";
+        return RedirectToAction("Habitacion", new { sala = lastRoom });
     }
 }

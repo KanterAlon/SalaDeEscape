@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Habitación 4";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="Habitacion">
+        <div class="habitacion-container">
+            <h2>Enigma del Código IATA</h2>
+            <p>Debes resolver este enigma para determinar el código IATA de un importante aeropuerto internacional. Convierte cada letra del código IATA a su posición correspondiente en el alfabeto (A=1, B=2, ..., Z=26) y suma los valores para obtener el número final. ¡Buena suerte!</p>
+            
+            <!-- Elementos Multimedia -->
+            <div class="multimedia">
+                <p>Pistas:</p>
+                <ul>
+                    <li>El aeropuerto está en una ciudad que es un importante hub de aviación.</li>
+                    <li>El código IATA del aeropuerto tiene tres letras.</li>
+                    <li>La primera letra del código es la primera letra del nombre de la ciudad.</li>
+                    <li>La segunda letra del código es la tercera letra del nombre del país.</li>
+                    <li>La tercera letra del código es la última letra del nombre del aeropuerto.</li>
+                </ul>
+            </div>
+            
+            <!-- Formulario para descifrar la clave -->
+            <form method="post" action="@Url.Action("Habitacion", "Home", new { sala = 4 })" autocomplete="off">
+                <input type="number" name="clave" placeholder="Ingresa el número final" required autocomplete="off">
+                <button type="submit">VALIDAR</button>
+            </form>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="error">
+                    <p>@ViewBag.Error</p>
+                </div>
+            }
+
+            <!-- Botones de pistas -->
+            <div class="pistas">
+                <button type="button" onclick="alert('Pista 1: Piensa en los aeropuertos más importantes y conocidos.')">Pista 1</button>
+                <button type="button" onclick="alert('Pista 2: La ciudad es un hub de aviación en los Estados Unidos.')">Pista 2</button>
+                <button type="button" onclick="alert('Pista 3: Convierte las letras a números y suma sus valores.')">Pista 3</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
