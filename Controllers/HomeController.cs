@@ -6,7 +6,6 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        // Reiniciar el temporizador cuando se accede a la página de inicio
         TempData["ResetTime"] = true;
         return View();
     }
@@ -16,7 +15,7 @@ public class HomeController : Controller
         return View();
     }
 
-     public IActionResult Victoria()
+    public IActionResult Victoria()
     {
         return View();
     }
@@ -52,7 +51,7 @@ public class HomeController : Controller
             // Verificar si la sala actual es la última
             if (sala == 5)
             {
-                return RedirectToAction("Victoria");
+                return RedirectToAction("Habitacion", new { sala = 6 });
             }
             else
             {
