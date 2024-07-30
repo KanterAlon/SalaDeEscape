@@ -49,7 +49,7 @@ public class HomeController : Controller
         if (resultado)
         {
             // Verificar si la sala actual es la última
-            if (sala == 6) // Última sala es la 6
+            if (sala == 5) // Última sala es la 6
             {
                 return RedirectToAction("Victoria");
             }
@@ -87,4 +87,3 @@ public class HomeController : Controller
         return RedirectToAction("Habitacion", new { sala = lastRoom });
     }
 }
-

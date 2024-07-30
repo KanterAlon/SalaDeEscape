@@ -1,13 +1,12 @@
 public static class Escape
 {
     private static string[] incognitasSalas = {
-            "742", // Respuesta para sala 1
-            "HELP", // Respuesta para sala 2
-            "SIERRA PAPA INDIA ROMEO INDIA TANGO", // Respuesta para sala 3
-            "27", // Respuesta para sala 4
-            "RGBA", // Respuesta para sala 5
-            "450" // Respuesta para sala 6
-        };
+        "742", // Respuesta para sala 1
+        "HELP", // Respuesta para sala 2
+        "SIERRA PAPA INDIA ROMEO INDIA TANGO", // Respuesta para sala 3
+        "27", // Respuesta para sala 4
+        "450", // Respuesta para sala 5
+    };
     private static int estadoJuego;
 
     static Escape()
@@ -23,7 +22,7 @@ public static class Escape
             "HELP", // Respuesta para sala 2
             "SIERRA PAPA INDIA ROMEO INDIA TANGO", // Respuesta para sala 3
             "27", // Respuesta para sala 4
-            "RGBA", // Respuesta para sala 5
+            "450", // Respuesta para sala 5
             "450" // Respuesta para sala 6
         };
         estadoJuego = 1;
