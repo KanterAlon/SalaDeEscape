@@ -1,6 +1,13 @@
 public static class Escape
 {
-    private static string[] incognitasSalas;
+    private static string[] incognitasSalas = {
+            "742", // Respuesta para sala 1
+            "HELP", // Respuesta para sala 2
+            "SIERRA PAPA INDIA ROMEO INDIA TANGO", // Respuesta para sala 3
+            "27", // Respuesta para sala 4
+            "RGBA", // Respuesta para sala 5
+            "450" // Respuesta para sala 6
+        };
     private static int estadoJuego;
 
     static Escape()
@@ -34,16 +41,15 @@ public static class Escape
 
     public static bool ResolverSala(int sala, string incognita)
     {
-        if (sala != estadoJuego)
-        {
-            return false; // Intentando resolver una sala a la que aún no tiene acceso
-        }
+        if (sala != estadoJuego || sala < 1 || sala > incognitasSalas.Length)
+            return false;
 
-        if (incognitasSalas[sala - 1].Equals(incognita, StringComparison.OrdinalIgnoreCase))
+        if (incognitasSalas[sala - 1] == incognita)
         {
             estadoJuego++;
             return true;
         }
+
         return false;
     }
 

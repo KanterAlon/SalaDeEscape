@@ -6,6 +6,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        // Reiniciar el temporizador cuando se accede a la página de inicio
+        TempData["ResetTime"] = true;
         return View();
     }
 
@@ -14,17 +16,21 @@ public class HomeController : Controller
         return View();
     }
 
+     public IActionResult Victoria()
+    {
+        return View();
+    }
+
     public IActionResult Comenzar()
-{
-    Escape.ReiniciarJuego(); // Reiniciar el juego antes de comenzar
-    int estadoJuego = Escape.GetEstadoJuego();
+    {
+        Escape.ReiniciarJuego(); // Reiniciar el juego antes de comenzar
+        int estadoJuego = Escape.GetEstadoJuego();
 
-    // Usar TempData para indicar que se debe reiniciar el temporizador
-    TempData["ResetTime"] = true;
+        // Usar TempData para indicar que se debe reiniciar el temporizador
+        TempData["ResetTime"] = true;
 
-    return RedirectToAction("Habitacion", new { sala = estadoJuego });
-}
-
+        return RedirectToAction("Habitacion", new { sala = estadoJuego });
+    }
 
     public IActionResult Creditos()
     {
@@ -34,42 +40,39 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Habitacion(int sala, string clave)
     {
-        int estadoJuego = Escape.GetEstadoJuego();
-        ViewBag.ResetTime = TempData["ResetTime"];
-
-        // Verifica si está resolviendo la sala correcta
-        if (sala != estadoJuego)
+        if (sala != Escape.GetEstadoJuego())
         {
-            return RedirectToAction("Habitacion", new { sala = estadoJuego });
+            return RedirectToAction("Habitacion", new { sala = Escape.GetEstadoJuego() });
         }
 
-        // Verifica la clave
-        bool esCorrecta = Escape.ResolverSala(sala, clave);
-        if (esCorrecta)
+        bool resultado = Escape.ResolverSala(sala, clave);
+
+        if (resultado)
         {
-            // Si es la última sala, ir a la vista Victoria
-            if (Escape.EsUltimaSala(sala))
+            // Verificar si la sala actual es la última
+            if (sala == 5)
             {
-                return View("Victoria");
+                return RedirectToAction("Victoria");
             }
             else
             {
-                // Ir a la siguiente habitación
-                TempData["ResetTime"] = true;
                 return RedirectToAction("Habitacion", new { sala = sala + 1 });
             }
         }
         else
         {
-            // Llena el ViewBag.Error y vuelve a la misma vista
-            ViewBag.Error = "La respuesta ingresada es incorrecta.";
+            ViewBag.Error = "Clave incorrecta. Inténtalo nuevamente.";
             return View($"Habitacion{sala}");
         }
     }
 
     public IActionResult Habitacion(int sala)
     {
-        ViewBag.ResetTime = TempData["ResetTime"];
+        if (sala != Escape.GetEstadoJuego())
+        {
+            return RedirectToAction("Habitacion", new { sala = Escape.GetEstadoJuego() });
+        }
+
         return View($"Habitacion{sala}");
     }
 
@@ -85,4 +88,3 @@ public class HomeController : Controller
         return RedirectToAction("Habitacion", new { sala = lastRoom });
     }
 }
-

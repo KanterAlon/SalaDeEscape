@@ -11,6 +11,7 @@
 <body>
     @{
         var action = ViewContext.RouteData.Values["action"].ToString();
+        var resetTime = TempData["ResetTime"] != null ? (bool)TempData["ResetTime"] : false;
     }
 
     @if (action == "Tutorial" || action == "Creditos")
@@ -40,8 +41,14 @@
 
         <script>
             const initialTime = 600; // 10 minutos en segundos
-            let timeLeft = localStorage.getItem('timeLeft') ? parseInt(localStorage.getItem('timeLeft')) : initialTime;
+            let timeLeft = initialTime;
             let timerInterval;
+
+            if ('@resetTime' === 'True') {
+                localStorage.setItem('timeLeft', initialTime);
+            }
+
+            timeLeft = localStorage.getItem('timeLeft') ? parseInt(localStorage.getItem('timeLeft')) : initialTime;
 
             function startTimer() {
                 clearInterval(timerInterval);
