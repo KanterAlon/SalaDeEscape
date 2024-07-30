@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dtq+nUH+GlP0juz5zjK+Ht2vhkeVwYu/Feh8IDeDOKE=",
+  "Hash": "oZ0PugMK41XGfeJO0pz4VW+2MFAK5RrgsmQA/9Q2ITM=",
   "Source": "proyecto-sala-de-escape",
   "BasePath": "_content/proyecto-sala-de-escape",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\css\\victoria.css",
+      "SourceId": "proyecto-sala-de-escape",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\",
+      "BasePath": "_content/proyecto-sala-de-escape",
+      "RelativePath": "css/victoria.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\victoria.css"
     },
     {
       "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\favicon.ico",

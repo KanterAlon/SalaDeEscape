@@ -9,10 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/victoria.css" />
 </head>
 <body>
     <div class="Habitacion">
-        <div class="habitacion-container">
+        <div class="victory-container">
             <h2>¡Felicidades!</h2>
             <p>¡Has resuelto todos los acertijos y asegurado el despegue del vuelo! ¡Buen trabajo, equipo!</p>
             <a href="@Url.Action("Index", "Home")" class="btn btn-primary-custom" onclick="resetTimer()">Volver al Inicio</a>
@@ -20,10 +21,24 @@
     </div>
 
     <script>
-        // Function to reset the timer
         function resetTimer() {
             localStorage.removeItem('timeLeft');
         }
+
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.classList.add('confetti');
+            document.body.appendChild(confettiContainer);
+
+            confettiContainer.style.left = Math.random() * 100 + 'vw';
+            confettiContainer.style.animationDuration = (Math.random() * 3 + 2) + 's';
+
+            setTimeout(() => {
+                confettiContainer.remove();
+            }, 5000);
+        }
+
+        setInterval(createConfetti, 200);
     </script>
 </body>
 </html>
