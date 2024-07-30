@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Habitación 2";
+    ViewData["Title"] = "Habitación 3";
 }
 
 <!DOCTYPE html>
@@ -36,8 +36,8 @@
 
             <!-- Botones de pistas -->
             <div class="pistas">
-                <button type="button" onclick="mostrarPista1()">Pista 1</button>
-                <button type="button" onclick="mostrarPista2()">Pista 2</button>
+                <button type="button" onclick="usarPista(3, 1)">Pista 1</button>
+                <button type="button" onclick="usarPista(3, 2)">Pista 2</button>
             </div>
 
             <div id="pista1" class="pista-content">
@@ -52,6 +52,18 @@
     </div>
 
     <script>
+        function usarPista(sala, pista) {
+            fetch(`@Url.Action("UsarPista", "Home")?sala=${sala}&pista=${pista}`, {
+                method: 'POST'
+            }).then(() => {
+                if (pista === 1) {
+                    mostrarPista1();
+                } else {
+                    mostrarPista2();
+                }
+            });
+        }
+
         function mostrarPista1() {
             var pista1 = document.getElementById('pista1');
             pista1.style.display = pista1.style.display === 'block' ? 'none' : 'block';
@@ -63,3 +75,4 @@
         }
     </script>
 </body>
+</html>

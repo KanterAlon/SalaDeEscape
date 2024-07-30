@@ -43,11 +43,27 @@
 
             <!-- Botones de pistas -->
             <div class="pistas">
-                <button type="button" onclick="alert('Pista 1: Piensa en los aeropuertos más importantes y conocidos.')">Pista 1</button>
-                <button type="button" onclick="alert('Pista 2: La ciudad es un hub de aviación en los Estados Unidos.')">Pista 2</button>
-                <button type="button" onclick="alert('Pista 3: Convierte las letras a números y suma sus valores.')">Pista 3</button>
+                <button type="button" onclick="usarPista(4, 1)">Pista 1</button>
+                <button type="button" onclick="usarPista(4, 2)">Pista 2</button>
+                <button type="button" onclick="usarPista(4, 3)">Pista 3</button>
             </div>
         </div>
     </div>
+
+    <script>
+        function usarPista(sala, pista) {
+            fetch(`@Url.Action("UsarPista", "Home")?sala=${sala}&pista=${pista}`, {
+                method: 'POST'
+            }).then(() => {
+                if (pista === 1) {
+                    alert('Pista 1: Piensa en los aeropuertos más importantes y conocidos.');
+                } else if (pista === 2) {
+                    alert('Pista 2: La ciudad es un hub de aviación en los Estados Unidos.');
+                } else {
+                    alert('Pista 3: Convierte las letras a números y suma sus valores.');
+                }
+            });
+        }
+    </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 @{
     ViewData["Title"] = "Victoria";
+    int intentosExtras = ViewBag.IntentosExtras ?? 0;
+    int pistasUsadas = ViewBag.PistasUsadas ?? 0;
 }
 
 <!DOCTYPE html>
@@ -8,16 +10,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/victoria.css" />
+    <link rel="stylesheet" href="~/css/victory.css" />
 </head>
 <body>
-    <div class="Habitacion">
-        <div class="victory-container">
-            <h2>¡Felicidades!</h2>
-            <p>¡Has resuelto todos los acertijos y asegurado el despegue del vuelo! ¡Buen trabajo, equipo!</p>
-            <a href="@Url.Action("Index", "Home")" class="btn btn-primary-custom" onclick="resetTimer()">Volver al Inicio</a>
-        </div>
+    <div class="victory-container">
+        <h2>¡Felicidades!</h2>
+        <p>¡Has resuelto todos los acertijos y asegurado el despegue del vuelo! ¡Buen trabajo, equipo!</p>
+        <p>Intentos extras utilizados: @intentosExtras</p>
+        <p>Pistas utilizadas: @pistasUsadas</p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary-custom" onclick="resetTimer()">Volver al Inicio</a>
     </div>
 
     <script>
@@ -26,19 +27,22 @@
         }
 
         function createConfetti() {
-            const confettiContainer = document.createElement('div');
-            confettiContainer.classList.add('confetti');
-            document.body.appendChild(confettiContainer);
-
-            confettiContainer.style.left = Math.random() * 100 + 'vw';
-            confettiContainer.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(confetti);
 
             setTimeout(() => {
-                confettiContainer.remove();
+                confetti.remove();
             }, 5000);
         }
 
-        setInterval(createConfetti, 200);
+        for (let i = 0; i < 100; i++) {
+            createConfetti();
+        }
+
+        setInterval(createConfetti, 300);
     </script>
 </body>
 </html>

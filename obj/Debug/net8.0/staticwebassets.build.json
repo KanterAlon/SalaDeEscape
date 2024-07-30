@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oZ0PugMK41XGfeJO0pz4VW+2MFAK5RrgsmQA/9Q2ITM=",
+  "Hash": "L7yT/42+Gz/gwjv0CjjQJuMny+1qeU1++UwH0AXT4Nw=",
   "Source": "proyecto-sala-de-escape",
   "BasePath": "_content/proyecto-sala-de-escape",
   "Mode": "Default",
@@ -74,12 +74,12 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\css\\victoria.css",
+      "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\css\\victory.css",
       "SourceId": "proyecto-sala-de-escape",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\",
       "BasePath": "_content/proyecto-sala-de-escape",
-      "RelativePath": "css/victoria.css",
+      "RelativePath": "css/victory.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -90,7 +90,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\victoria.css"
+      "OriginalItemSpec": "wwwroot\\css\\victory.css"
     },
     {
       "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\favicon.ico",

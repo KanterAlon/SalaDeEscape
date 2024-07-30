@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 
 public class HomeController : Controller
 {
-    // Sección: Vistas Principales
     public IActionResult Index()
     {
         TempData["ResetTime"] = true;
@@ -16,21 +15,22 @@ public class HomeController : Controller
 
     public IActionResult Victoria()
     {
+        ViewBag.IntentosExtras = Escape.GetIntentosExtras();
+        ViewBag.PistasUsadas = Escape.GetPistasUsadas();
         return View();
     }
 
-    public IActionResult Creditos()
-    {
-        return View();
-    }
-
-    // Sección: Gestión del Juego
     public IActionResult Comenzar()
     {
         Escape.ReiniciarJuego();
         int estadoJuego = Escape.GetEstadoJuego();
         TempData["ResetTime"] = true;
         return RedirectToAction("Habitacion", new { sala = estadoJuego });
+    }
+
+    public IActionResult Creditos()
+    {
+        return View();
     }
 
     [HttpPost]
@@ -45,7 +45,7 @@ public class HomeController : Controller
 
         if (resultado)
         {
-            if (sala==6)
+            if (Escape.EsUltimaSala(sala))
             {
                 return RedirectToAction("Victoria");
             }
@@ -56,6 +56,7 @@ public class HomeController : Controller
         }
         else
         {
+            Escape.IncrementarIntentos();
             ViewBag.Error = "Clave incorrecta. Inténtalo nuevamente.";
             return View($"Habitacion{sala}");
         }
@@ -71,7 +72,6 @@ public class HomeController : Controller
         return View($"Habitacion{sala}");
     }
 
-    // Sección: Gestión de Tiempo
     public IActionResult Tiempo()
     {
         return View();
@@ -81,9 +81,13 @@ public class HomeController : Controller
     public IActionResult AgregarTiempo()
     {
         var lastRoom = HttpContext.Session.GetString("lastRoom") ?? "1";
-        int timeLeft = HttpContext.Session.GetInt32("timeLeft") ?? 0;
-        HttpContext.Session.SetInt32("timeLeft", timeLeft + 60); // Agregar 1 minuto (60 segundos)
         return RedirectToAction("Habitacion", new { sala = lastRoom });
     }
 
+    [HttpPost]
+    public IActionResult UsarPista(int sala)
+    {
+        Escape.UsarPista();
+        return new EmptyResult();
+    }
 }
