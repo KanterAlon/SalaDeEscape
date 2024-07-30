@@ -78,10 +78,12 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-     public IActionResult AgregarTiempo()
+    public IActionResult AgregarTiempo()
     {
         var lastRoom = HttpContext.Session.GetString("lastRoom") ?? "1";
-        HttpContext.Session.SetInt32("timeLeft", 60); // Agregar 1 minuto (60 segundos)
+        int timeLeft = HttpContext.Session.GetInt32("timeLeft") ?? 0;
+        HttpContext.Session.SetInt32("timeLeft", timeLeft + 60); // Agregar 1 minuto (60 segundos)
         return RedirectToAction("Habitacion", new { sala = lastRoom });
     }
+
 }
