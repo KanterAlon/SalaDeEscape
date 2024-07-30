@@ -1,5 +1,6 @@
 @{
-    ViewData["Title"] = "Habitación 4";
+    ViewData["Title"] = "Habitación 2";
+    string nombreJugador = ViewBag.NombreJugador as string;
 }
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Enigma del Código IATA</h2>
-            <p>Debes resolver este enigma para determinar el código IATA de un importante aeropuerto internacional. Convierte cada letra del código IATA a su posición correspondiente en el alfabeto (A=1, B=2, ..., Z=26) y suma los valores para obtener el número final. ¡Buena suerte!</p>
+            <p>@nombreJugador, Debes resolver este enigma para determinar el código IATA de un importante aeropuerto internacional. Convierte cada letra del código IATA a su posición correspondiente en el alfabeto (A=1, B=2, ..., Z=26) y suma los valores para obtener el número final. ¡Buena suerte!</p>
             
             <!-- Elementos Multimedia -->
             <div class="multimedia">

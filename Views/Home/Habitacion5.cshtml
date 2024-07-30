@@ -1,5 +1,6 @@
 @{
-    ViewData["Title"] = "Habitación 6";
+    ViewData["Title"] = "Habitación 2";
+    string nombreJugador = ViewBag.NombreJugador as string;
 }
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Acertijo Matemático</h2>
-            <p>Para asegurar el despegue del vuelo, debes resolver el siguiente acertijo matemático. ¡Buena suerte!</p>
+            <p>Para asegurar el despegue del vuelo, debes resolver el siguiente acertijo matemático. ¡Buena suerte, @nombreJugador!</p>
             <p>Pista: Si el vuelo A tiene 150 pasajeros y el vuelo B tiene el doble, ¿cuántos pasajeros tienen en total?</p>
             
             <!-- Formulario para descifrar la clave -->

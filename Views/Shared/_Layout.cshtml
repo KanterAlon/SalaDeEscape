@@ -12,6 +12,7 @@
     @{
         var action = ViewContext.RouteData.Values["action"].ToString();
         var resetTime = TempData["ResetTime"] != null ? (bool)TempData["ResetTime"] : false;
+        var initialTime = TempData["InitialTime"] != null ? (int)TempData["InitialTime"] : 600; // Default to 10 minutes
     }
 
     @if (action == "Tutorial" || action == "Creditos")
@@ -35,20 +36,19 @@
         <footer>
             <div class="footer-content">
                 <button class="btn btn-secondary-custom back-to-home">Volver al Inicio</button>
-                <div class="timer">Tiempo: <span id="timer">05:00</span></div>
+                <div class="timer">Tiempo: <span id="timer">@($"{initialTime / 60:00}:{initialTime % 60:00}")</span></div>
             </div>
         </footer>
 
         <script>
-            const initialTime = 300; // 10 minutos en segundos
-            let timeLeft = initialTime;
+            let timeLeft = @initialTime;
             let timerInterval;
 
             if ('@resetTime' === 'True') {
-                localStorage.setItem('timeLeft', initialTime);
+                localStorage.setItem('timeLeft', timeLeft);
             }
 
-            timeLeft = localStorage.getItem('timeLeft') ? parseInt(localStorage.getItem('timeLeft')) : initialTime;
+            timeLeft = localStorage.getItem('timeLeft') ? parseInt(localStorage.getItem('timeLeft')) : timeLeft;
 
             function startTimer() {
                 clearInterval(timerInterval);
@@ -74,7 +74,7 @@
                 // Guardar la última habitación visitada
                 localStorage.setItem('lastRoom', '@action');
 
-                timeLeft = localStorage.getItem('timeLeft') ? parseInt(localStorage.getItem('timeLeft')) : initialTime; // Usar el tiempo restante guardado
+                timeLeft = localStorage.getItem('timeLeft') ? parseInt(localStorage.getItem('timeLeft')) : timeLeft; // Usar el tiempo restante guardado
                 displayTime(timeLeft);
 
                 // Detener el temporizador si está en la página de victoria

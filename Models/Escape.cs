@@ -6,11 +6,12 @@ public static class Escape
         "SIERRA PAPA INDIA ROMEO INDIA TANGO", // Respuesta para sala 3
         "27", // Respuesta para sala 4
         "450", // Respuesta para sala 5
-        "450" // Respuesta para sala 6
+        "x" // Respuesta para sala 6
     };
     private static int estadoJuego;
     private static int intentosExtras;
     private static int pistasUsadas;
+    private static string nombreJugador;
 
     static Escape()
     {
@@ -22,6 +23,7 @@ public static class Escape
         estadoJuego = 1;
         intentosExtras = 0;
         pistasUsadas = 0;
+        nombreJugador = string.Empty;
     }
 
     public static int GetEstadoJuego()
@@ -34,6 +36,7 @@ public static class Escape
         estadoJuego = 1;
         intentosExtras = 0;
         pistasUsadas = 0;
+        nombreJugador = string.Empty;
     }
 
     public static bool ResolverSala(int sala, string incognita)
@@ -74,5 +77,15 @@ public static class Escape
     public static int GetPistasUsadas()
     {
         return pistasUsadas;
+    }
+
+    public static void SetNombreJugador(string nombre)
+    {
+        nombreJugador = nombre;
+    }
+
+    public static string GetNombreJugador()
+    {
+        return nombreJugador;
     }
 }

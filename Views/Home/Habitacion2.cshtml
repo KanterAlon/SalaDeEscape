@@ -1,6 +1,8 @@
 @{
     ViewData["Title"] = "Habitación 2";
+    string nombreJugador = ViewBag.NombreJugador as string;
 }
+
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,7 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Enigma del Código Morse</h2>
-            <p>Debes descifrar el mensaje en código Morse para avanzar. ¡Buena suerte!</p>
+            <p>Debes descifrar el mensaje en código Morse para avanzar. ¡Buena suerte, @nombreJugador !</p>
             
             <!-- Elementos Multimedia -->
             <div class="multimedia">

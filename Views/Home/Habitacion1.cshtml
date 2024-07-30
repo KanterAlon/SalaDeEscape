@@ -1,5 +1,6 @@
 @{
-    ViewData["Title"] = "Habitación 1";
+    ViewData["Title"] = "Habitación 2";
+    string nombreJugador = ViewBag.NombreJugador as string;
 }
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Emergencia en el Aeropuerto</h2>
-            <p>¡Atención, equipo! Tenemos una emergencia en el aeropuerto. Debemos encontrar y activar el código de despegue antes de que el tiempo se acabe. El vuelo 742 debe despegar en una hora o todo el plan de vuelo se verá comprometido. ¡Buena suerte!</p>
+            <p>¡Atención, @nombreJugador! Tenemos una emergencia en el aeropuerto. Debemos encontrar y activar el código de despegue antes de que el tiempo se acabe. El vuelo 742 debe despegar en una hora o todo el plan de vuelo se verá comprometido. ¡Buena suerte!</p>
             
             <!-- Elementos Multimedia -->
             <div class="multimedia">

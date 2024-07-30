@@ -1,5 +1,6 @@
 @{
-    ViewData["Title"] = "Habitación 3";
+    ViewData["Title"] = "Habitación 2";
+    string nombreJugador = ViewBag.NombreJugador as string;
 }
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Identificación del Avión</h2>
-            <p>Has descubierto que el avión es de color amarillo. Ahora necesitas el código de la aerolínea. A esta Aerolinea, en español, la llaman el eSPIRITu de los cielos..</p>
+            <p>@nombreJugador, Has descubierto que el avión es de color amarillo. Ahora necesitas el código de la aerolínea. A esta Aerolinea, en español, la llaman el eSPIRITu de los cielos..</p>
             
             <!-- Elementos Multimedia -->
             <div class="multimedia">

@@ -6,7 +6,16 @@
 <body class="Landing">
     <div class="content-container">
         <h1>Namaltofa</h1>
-        <a class="btn btn-primary-custom" href="@Url.Action("Comenzar", "Home")">Comenzar</a>
+        <form method="post" action="@Url.Action("Comenzar", "Home")">
+            <input type="text" name="jugador" placeholder="Ingresa tu nombre" required autocomplete="off">
+            <label for="nivel">Selecciona el nivel:</label>
+            <select name="nivel" id="nivel" required>
+                <option value="1">Fácil (15 minutos)</option>
+                <option value="2">Medio (10 minutos)</option>
+                <option value="3">Difícil (5 minutos)</option>
+            </select>
+            <button type="submit" class="btn btn-primary-custom">Comenzar</button>
+        </form>
         <a class="btn btn-secondary-custom" href="@Url.Action("Tutorial", "Home")">Tutorial</a>
         <a class="btn btn-default-custom" href="@Url.Action("Creditos", "Home")">Creditos</a>
     </div>

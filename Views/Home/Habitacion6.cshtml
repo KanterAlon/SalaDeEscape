@@ -1,5 +1,6 @@
 @{
-    ViewData["Title"] = "Habitación 6";
+    ViewData["Title"] = "Habitación 2";
+    string nombreJugador = ViewBag.NombreJugador as string;
 }
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Panel de Control de la Cabina</h2>
-            <p>¡Atención, equipo! Deben seguir la secuencia de luces del panel de control. Recuerden la combinación y repítanla correctamente. ¡Buena suerte!</p>
+            <p>¡Atención @nombreJugador! Deben seguir la secuencia de luces del panel de control. Recuerden la combinación y repítanla correctamente. ¡Buena suerte!</p>
             
             <!-- Panel de control -->
             <div class="panel-control">

@@ -17,14 +17,37 @@ public class HomeController : Controller
     {
         ViewBag.IntentosExtras = Escape.GetIntentosExtras();
         ViewBag.PistasUsadas = Escape.GetPistasUsadas();
+        ViewBag.NombreJugador = Escape.GetNombreJugador();
         return View();
     }
 
-    public IActionResult Comenzar()
+    [HttpPost]
+    public IActionResult Comenzar(string jugador, int nivel)
     {
         Escape.ReiniciarJuego();
-        int estadoJuego = Escape.GetEstadoJuego();
+        Escape.SetNombreJugador(jugador);
+
+        int initialTime;
+        switch (nivel)
+        {
+            case 1:
+                initialTime = 900; // 15 minutos
+                break;
+            case 2:
+                initialTime = 600; // 10 minutos
+                break;
+            case 3:
+                initialTime = 300; // 5 minutos
+                break;
+            default:
+                initialTime = 600; // Valor por defecto (10 minutos)
+                break;
+        }
+
+        TempData["InitialTime"] = initialTime;
         TempData["ResetTime"] = true;
+
+        int estadoJuego = Escape.GetEstadoJuego();
         return RedirectToAction("Habitacion", new { sala = estadoJuego });
     }
 
@@ -58,6 +81,7 @@ public class HomeController : Controller
         {
             Escape.IncrementarIntentos();
             ViewBag.Error = "Clave incorrecta. Inténtalo nuevamente.";
+            ViewBag.NombreJugador = Escape.GetNombreJugador();
             return View($"Habitacion{sala}");
         }
     }
@@ -69,6 +93,7 @@ public class HomeController : Controller
             return RedirectToAction("Habitacion", new { sala = Escape.GetEstadoJuego() });
         }
 
+        ViewBag.NombreJugador = Escape.GetNombreJugador();
         return View($"Habitacion{sala}");
     }
 
