@@ -15,8 +15,15 @@
         <div class="habitacion-container">
             <h2>¡Felicidades!</h2>
             <p>¡Has resuelto todos los acertijos y asegurado el despegue del vuelo! ¡Buen trabajo, equipo!</p>
-            <a href="@Url.Action("Index", "Home")" class="btn btn-primary-custom">Volver al Inicio</a>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary-custom" onclick="resetTimer()">Volver al Inicio</a>
         </div>
     </div>
+
+    <script>
+        // Function to reset the timer
+        function resetTimer() {
+            localStorage.removeItem('timeLeft');
+        }
+    </script>
 </body>
 </html>

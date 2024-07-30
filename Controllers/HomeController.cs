@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 
 public class HomeController : Controller
 {
-    // Action Methods
-
     public IActionResult Index()
     {
         TempData["ResetTime"] = true;
@@ -22,12 +20,9 @@ public class HomeController : Controller
 
     public IActionResult Comenzar()
     {
-        Escape.ReiniciarJuego(); // Reiniciar el juego antes de comenzar
+        Escape.ReiniciarJuego();
         int estadoJuego = Escape.GetEstadoJuego();
-
-        // Usar TempData para indicar que se debe reiniciar el temporizador
         TempData["ResetTime"] = true;
-
         return RedirectToAction("Habitacion", new { sala = estadoJuego });
     }
 
@@ -48,8 +43,7 @@ public class HomeController : Controller
 
         if (resultado)
         {
-            // Verificar si la sala actual es la última
-            if (sala == 5) // Última sala es la 6
+            if (sala == 6)
             {
                 return RedirectToAction("Victoria");
             }

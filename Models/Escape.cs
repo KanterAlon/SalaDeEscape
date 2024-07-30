@@ -5,7 +5,8 @@ public static class Escape
         "HELP", // Respuesta para sala 2
         "SIERRA PAPA INDIA ROMEO INDIA TANGO", // Respuesta para sala 3
         "27", // Respuesta para sala 4
-        "450", // Respuesta para sala 5
+        "450", 
+        // Respuesta para sala 5
     };
     private static int estadoJuego;
 

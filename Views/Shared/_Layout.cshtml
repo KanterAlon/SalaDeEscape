@@ -30,7 +30,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
-    @if (action != "Index" && action != "Tutorial" && action != "Creditos" && action != "Tiempo")
+    @if (action != "Index" && action != "Tutorial" && action != "Creditos" && action != "Tiempo" && action != "Victoria")
     {
         <footer>
             <div class="footer-content">
@@ -76,7 +76,11 @@
 
                 timeLeft = localStorage.getItem('timeLeft') ? parseInt(localStorage.getItem('timeLeft')) : initialTime; // Usar el tiempo restante guardado
                 displayTime(timeLeft);
-                startTimer();
+
+                // Detener el temporizador si está en la página de victoria
+                if ('@action' !== 'Victoria') {
+                    startTimer();
+                }
 
                 // Confirmación para volver al inicio
                 document.querySelector('.back-to-home').addEventListener('click', function() {

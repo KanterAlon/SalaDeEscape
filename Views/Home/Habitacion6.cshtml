@@ -1,0 +1,109 @@
+@{
+    ViewData["Title"] = "Habitación 6";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="Habitacion">
+        <div class="habitacion-container">
+            <h2>Panel de Control de la Cabina</h2>
+            <p>¡Atención, equipo! Deben seguir la secuencia de luces del panel de control. Recuerden la combinación y repítanla correctamente. ¡Buena suerte!</p>
+            
+            <!-- Panel de control -->
+            <div class="panel-control">
+                <div class="light red" data-color="red"></div>
+                <div class="light green" data-color="green"></div>
+                <div class="light blue" data-color="blue"></div>
+                <div class="light yellow" data-color="yellow"></div>
+            </div>
+
+            <div class="counter">
+                <p>Nivel: <span id="nivel">1</span></p>
+            </div>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="error">
+                    <p>@ViewBag.Error</p>
+                </div>
+            }
+
+            <!-- Botón para saltar al nivel 10 -->
+            <button class="btn-skip" onclick="saltarNivel10()">Saltar al Nivel 10</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const colores = ['red', 'green', 'blue', 'yellow'];
+            let secuencia = [];
+            let nivel = 1;
+            let indexUsuario = 0;
+
+            function generarSecuencia() {
+                secuencia = [];
+                for (let i = 0; i < nivel; i++) {
+                    const colorAleatorio = colores[Math.floor(Math.random() * colores.length)];
+                    secuencia.push(colorAleatorio);
+                }
+            }
+
+            function mostrarSecuencia() {
+                let delay = 0;
+                secuencia.forEach((color, index) => {
+                    setTimeout(() => {
+                        $(`.light[data-color="${color}"]`).addClass('active');
+                        setTimeout(() => {
+                            $(`.light[data-color="${color}"]`).removeClass('active');
+                        }, 500);
+                    }, delay);
+                    delay += 1000;
+                });
+            }
+
+            function iniciarNivel() {
+                generarSecuencia();
+                mostrarSecuencia();
+                indexUsuario = 0;
+            }
+
+            $('.light').click(function () {
+                const color = $(this).data('color');
+                if (color === secuencia[indexUsuario]) {
+                    indexUsuario++;
+                    if (indexUsuario === secuencia.length) {
+                        nivel++;
+                        $('#nivel').text(nivel);
+                        if (nivel > 10) {
+                            window.location.href = '/Home/Victoria';
+                        } else {
+                            setTimeout(iniciarNivel, 1000);
+                        }
+                    }
+                } else {
+                    alert('Error. Inténtalo nuevamente.');
+                    nivel = 1;
+                    $('#nivel').text(nivel);
+                    setTimeout(iniciarNivel, 1000);
+                }
+            });
+
+            window.saltarNivel10 = function() {
+                nivel = 10;
+                $('#nivel').text(nivel);
+                secuencia = [colores[Math.floor(Math.random() * colores.length)]]; // Generar una combinación de un color
+                mostrarSecuencia();
+            }
+
+            iniciarNivel();
+        });
+    </script>
+</body>
+</html>
