@@ -4,37 +4,38 @@ public class HomeController : Controller
 {
     // Action Methods
 
-    // 1. Index: Retorna la View Index con la presentación del juego.
     public IActionResult Index()
     {
         return View();
     }
 
-    // 2. Tutorial: Retorna la View Tutorial con la explicación del juego.
     public IActionResult Tutorial()
     {
         return View();
     }
 
-    // 3. Comenzar → Devuelve la view de la próxima Habitación a resolver (Según lo que indique EstadoJuego)
     public IActionResult Comenzar()
-    {
-        Escape.ReiniciarJuego(); // Reiniciar el juego antes de comenzar
-        int estadoJuego = Escape.GetEstadoJuego();
-        return RedirectToAction("Habitacion", new { sala = estadoJuego });
-    }
+{
+    Escape.ReiniciarJuego(); // Reiniciar el juego antes de comenzar
+    int estadoJuego = Escape.GetEstadoJuego();
 
-    // 4. Creditos: Retorna la View Creditos con los créditos del juego.
+    // Usar TempData para indicar que se debe reiniciar el temporizador
+    TempData["ResetTime"] = true;
+
+    return RedirectToAction("Habitacion", new { sala = estadoJuego });
+}
+
+
     public IActionResult Creditos()
     {
         return View();
     }
 
-    // 5. Habitacion(int sala, string clave) → Verifica que la sala que se está respondiendo coincida con EstadoJuego.
     [HttpPost]
     public IActionResult Habitacion(int sala, string clave)
     {
         int estadoJuego = Escape.GetEstadoJuego();
+        ViewBag.ResetTime = TempData["ResetTime"];
 
         // Verifica si está resolviendo la sala correcta
         if (sala != estadoJuego)
@@ -54,6 +55,7 @@ public class HomeController : Controller
             else
             {
                 // Ir a la siguiente habitación
+                TempData["ResetTime"] = true;
                 return RedirectToAction("Habitacion", new { sala = sala + 1 });
             }
         }
@@ -65,24 +67,22 @@ public class HomeController : Controller
         }
     }
 
-    // Manejo de solicitudes GET para la vista de la habitación
     public IActionResult Habitacion(int sala)
     {
+        ViewBag.ResetTime = TempData["ResetTime"];
         return View($"Habitacion{sala}");
     }
 
-    // Acción para manejar el tiempo agotado
     public IActionResult Tiempo()
     {
         return View();
     }
 
-    // Acción para añadir más tiempo al temporizador
     [HttpPost]
     public IActionResult AgregarTiempo()
     {
-        // Añadir 1 minuto al tiempo restante (esto se haría en el frontend, aquí simplemente redirigimos)
         var lastRoom = HttpContext.Session.GetString("lastRoom") ?? "1";
         return RedirectToAction("Habitacion", new { sala = lastRoom });
     }
 }
+
