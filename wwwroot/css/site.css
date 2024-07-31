@@ -419,22 +419,27 @@ footer {
   margin-bottom: 20px;
   color: #333;
 }
-/* Estilo para el avión interactivo */
-.airplane {
+
+.airplane, .juli {
   position: absolute;
-  width: 150px; /* Tamaño más grande del avión */
-  height: 150px; /* Tamaño más grande del avión */
-  background-image: url('/img/airplane.png'); /* Asegúrate de tener una imagen de avión en esta ruta */
+  width: 150px; /* Tamaño más grande */
+  height: 150px; /* Tamaño más grande */
   background-size: contain; /* Asegura que la imagen no se corte */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   transition: transform 0.1s;
 }
 
-.airplane:active {
+.airplane:active, .juli:active {
   transform: scale(1.2);
 }
 
-/* Estilo para el botón "Generar Avión" */
-#generate-airplane {
+/* Estilo para el botón "Generar Avión" y "Generar Juli Medina" */
+#generate-airplane, #generate-juli {
   margin-top: 40px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }

@@ -18,7 +18,10 @@
         </form>
         <a class="btn btn-secondary-custom" href="@Url.Action("Tutorial", "Home")">Tutorial</a>
         <a class="btn btn-default-custom" href="@Url.Action("Creditos", "Home")">Creditos</a>
-        <button id="generate-airplane" class="btn btn-default-custom" style="margin-top: 40px;">Generar Avión</button>
+        <div class="button-container">
+            <button id="generate-airplane" class="btn btn-default-custom" style="margin-top: 40px;">Generar Avión</button>
+            <button id="generate-juli" class="btn btn-default-custom" style="margin-top: 40px;">Generar Juli Medina</button>
+        </div>
         <img id="dingdong-bell" src="/img/bell.png" alt="Ding Dong Bell" style="cursor: pointer; width: 50px; height: 50px; margin-top: 20px;">
     </div>
 
@@ -29,86 +32,96 @@
         document.addEventListener('DOMContentLoaded', function () {
             const airplaneContainer = document.getElementById('airplane-container');
             const generateAirplaneButton = document.getElementById('generate-airplane');
+            const generateJuliButton = document.getElementById('generate-juli');
             const dingdongBell = document.getElementById('dingdong-bell');
             const dingdongAudio = new Audio('/img/dingdong.mp3');
-            let airplane = null;
-            let airplaneInterval = null;
+            let item = null;
+            let itemInterval = null;
 
             generateAirplaneButton.addEventListener('click', () => {
-                if (airplane) {
-                    airplane.remove();
-                    clearInterval(airplaneInterval);
+                if (item) {
+                    item.remove();
+                    clearInterval(itemInterval);
                 }
-                createAirplane();
+                createItem('airplane', '/img/airplane.png');
+            });
+
+            generateJuliButton.addEventListener('click', () => {
+                if (item) {
+                    item.remove();
+                    clearInterval(itemInterval);
+                }
+                createItem('juli', '/img/julimedina.png');
             });
 
             dingdongBell.addEventListener('click', () => {
                 dingdongAudio.play();
             });
 
-            function createAirplane() {
-                airplane = document.createElement('div');
-                airplane.classList.add('airplane');
+            function createItem(type, imageUrl) {
+                item = document.createElement('div');
+                item.classList.add(type);
+                item.style.backgroundImage = `url('${imageUrl}')`;
 
                 const startX = Math.random() * window.innerWidth;
-                airplane.style.left = `${startX}px`;
-                airplane.style.top = `-100px`; // Start above the screen
+                item.style.left = `${startX}px`;
+                item.style.top = `-100px`; // Start above the screen
 
-                airplaneContainer.appendChild(airplane);
+                airplaneContainer.appendChild(item);
 
-                airplane.addEventListener('click', () => {
-                    airplaneClickHandler(airplane);
+                item.addEventListener('click', () => {
+                    itemClickHandler(item);
                 });
 
-                moveAirplane(airplane);
+                moveItem(item);
             }
 
-            function moveAirplane(airplane) {
-                let posX = parseFloat(airplane.style.left);
-                let posY = parseFloat(airplane.style.top);
+            function moveItem(item) {
+                let posX = parseFloat(item.style.left);
+                let posY = parseFloat(item.style.top);
                 let velX = (Math.random() - 0.5) * 4;
                 let velY = (Math.random() - 0.5) * 10;
                 const gravity = 0.5;
                 const bounce = 0.7;
                 const groundLevel = window.innerHeight - 30; // Ajustar el valor del rebote en el borde inferior
 
-                airplaneInterval = setInterval(() => {
+                itemInterval = setInterval(() => {
                     posX += velX;
                     posY += velY;
                     velY += gravity;
 
-                    if (posX + airplane.clientWidth > window.innerWidth || posX < 0) {
+                    if (posX + item.clientWidth > window.innerWidth || posX < 0) {
                         velX *= -bounce;
-                        posX = Math.max(0, Math.min(window.innerWidth - airplane.clientWidth, posX));
+                        posX = Math.max(0, Math.min(window.innerWidth - item.clientWidth, posX));
                     }
-                    if (posY + airplane.clientHeight > groundLevel) {
+                    if (posY + item.clientHeight > groundLevel) {
                         velY *= -bounce;
-                        posY = groundLevel - airplane.clientHeight;
+                        posY = groundLevel - item.clientHeight;
                         if (Math.abs(velY) < 1) {
                             velY = 0;
                             velX = 0;
-                            clearInterval(airplaneInterval);
+                            clearInterval(itemInterval);
                         }
                     }
 
-                    airplane.style.left = `${posX}px`;
-                    airplane.style.top = `${posY}px`;
+                    item.style.left = `${posX}px`;
+                    item.style.top = `${posY}px`;
                 }, 20);
             }
 
-            function airplaneClickHandler(airplane) {
-                clearInterval(airplaneInterval); // Stop current movement
+            function itemClickHandler(item) {
+                clearInterval(itemInterval); // Stop current movement
                 let velX = (Math.random() - 0.5) * 4;
                 let velY = -(Math.random() * 15 + 10); // Stronger upward force
-                let posX = parseFloat(airplane.style.left);
-                let posY = parseFloat(airplane.style.top);
+                let posX = parseFloat(item.style.left);
+                let posY = parseFloat(item.style.top);
                 const gravity = 0.5;
                 const bounce = 0.7;
-                const groundLevel = window.innerHeight - 1; // Ajustar el valor del rebote en el borde inferior
+                const groundLevel = window.innerHeight - 30; // Ajustar el valor del rebote en el borde inferior
 
-                airplaneInterval = setInterval(() => {
-                    if (!airplane) {
-                        clearInterval(airplaneInterval);
+                itemInterval = setInterval(() => {
+                    if (!item) {
+                        clearInterval(itemInterval);
                         return;
                     }
 
@@ -116,22 +129,22 @@
                     posY += velY;
                     velY += gravity;
 
-                    if (posX + airplane.clientWidth > window.innerWidth || posX < 0) {
+                    if (posX + item.clientWidth > window.innerWidth || posX < 0) {
                         velX *= -bounce;
-                        posX = Math.max(0, Math.min(window.innerWidth - airplane.clientWidth, posX));
+                        posX = Math.max(0, Math.min(window.innerWidth - item.clientWidth, posX));
                     }
-                    if (posY + airplane.clientHeight > groundLevel) {
+                    if (posY + item.clientHeight > groundLevel) {
                         velY *= -bounce;
-                        posY = groundLevel - airplane.clientHeight;
+                        posY = groundLevel - item.clientHeight;
                         if (Math.abs(velY) < 1) {
                             velY = 0;
                             velX = 0;
-                            clearInterval(airplaneInterval);
+                            clearInterval(itemInterval);
                         }
                     }
 
-                    airplane.style.left = `${posX}px`;
-                    airplane.style.top = `${posY}px`;
+                    item.style.left = `${posX}px`;
+                    item.style.top = `${posY}px`;
                 }, 20);
             }
         });
