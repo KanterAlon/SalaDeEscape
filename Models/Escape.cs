@@ -23,7 +23,7 @@ public static class Escape
         estadoJuego = 1;
         intentosExtras = 0;
         pistasUsadas = 0;
-        nombreJugador = string.Empty;
+        nombreJugador = string.Empty; //es lo mismo que decir ""
     }
 
     public static int GetEstadoJuego()
@@ -39,20 +39,21 @@ public static class Escape
         nombreJugador = string.Empty;
     }
 
-    public static bool ResolverSala(int sala, string incognita)
-    {
-        if (sala != estadoJuego || sala < 1 || sala > incognitasSalas.Length)
-            return false;
-
-        if (incognitasSalas[sala - 1].Equals(incognita, StringComparison.OrdinalIgnoreCase))
-        {
-            estadoJuego++;
-            return true;
-        }
-
-        intentosExtras++;
+//Resolver sala cambiado. revisar
+public static bool ResolverSala(int sala, string incognita)
+{
+    if (sala != estadoJuego || sala < 1 || sala > incognitasSalas.Length)
         return false;
+
+    if (incognitasSalas[sala - 1].ToLower() == incognita.ToLower())
+    {
+        estadoJuego++;
+        return true;
     }
+
+    intentosExtras++;
+    return false;
+}
 
     public static bool EsUltimaSala(int sala)
     {
