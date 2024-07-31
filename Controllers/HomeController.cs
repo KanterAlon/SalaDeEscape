@@ -4,7 +4,7 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
-        TempData["ResetTime"] = true;
+        TempData["ResetTime"] = true; //Esto resetea el timer cada vez que vuelve a index
         return View();
     }
 
