@@ -70,6 +70,7 @@
                 let velY = (Math.random() - 0.5) * 10;
                 const gravity = 0.5;
                 const bounce = 0.7;
+                const groundLevel = window.innerHeight - 30; // Ajustar el valor del rebote en el borde inferior
 
                 airplaneInterval = setInterval(() => {
                     posX += velX;
@@ -80,9 +81,9 @@
                         velX *= -bounce;
                         posX = Math.max(0, Math.min(window.innerWidth - airplane.clientWidth, posX));
                     }
-                    if (posY + airplane.clientHeight > window.innerHeight) {
+                    if (posY + airplane.clientHeight > groundLevel) {
                         velY *= -bounce;
-                        posY = window.innerHeight - airplane.clientHeight;
+                        posY = groundLevel - airplane.clientHeight;
                         if (Math.abs(velY) < 1) {
                             velY = 0;
                             velX = 0;
@@ -103,6 +104,7 @@
                 let posY = parseFloat(airplane.style.top);
                 const gravity = 0.5;
                 const bounce = 0.7;
+                const groundLevel = window.innerHeight - 1; // Ajustar el valor del rebote en el borde inferior
 
                 airplaneInterval = setInterval(() => {
                     if (!airplane) {
@@ -118,9 +120,9 @@
                         velX *= -bounce;
                         posX = Math.max(0, Math.min(window.innerWidth - airplane.clientWidth, posX));
                     }
-                    if (posY + airplane.clientHeight > window.innerHeight) {
+                    if (posY + airplane.clientHeight > groundLevel) {
                         velY *= -bounce;
-                        posY = window.innerHeight - airplane.clientHeight;
+                        posY = groundLevel - airplane.clientHeight;
                         if (Math.abs(velY) < 1) {
                             velY = 0;
                             velX = 0;

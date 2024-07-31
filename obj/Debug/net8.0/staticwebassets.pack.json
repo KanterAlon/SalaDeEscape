@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets\\img\\background_juego.jpeg"
     },
     {
+      "Id": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\bell.png",
+      "PackagePath": "staticwebassets\\img\\bell.png"
+    },
+    {
       "Id": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\control_center_radio.jpg",
       "PackagePath": "staticwebassets\\img\\control_center_radio.jpg"
     },

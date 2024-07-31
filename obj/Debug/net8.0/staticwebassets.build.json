@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HI2o2MLWRsU4FOj3TeL95deuutAidvRAqqj11fOUmVM=",
+  "Hash": "J3Hw4DrOyUmfk8W/+94VYD/B17ONsGdzD20HcdWfq+8=",
   "Source": "proyecto-sala-de-escape",
   "BasePath": "_content/proyecto-sala-de-escape",
   "Mode": "Default",
@@ -205,6 +205,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\background_juego.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\bell.png",
+      "SourceId": "proyecto-sala-de-escape",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\",
+      "BasePath": "_content/proyecto-sala-de-escape",
+      "RelativePath": "img/bell.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\bell.png"
     },
     {
       "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\control_center_radio.jpg",
