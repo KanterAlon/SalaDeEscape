@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Habitación 2";
+    ViewData["Title"] = "Habitación 6";
     string nombreJugador = ViewBag.NombreJugador as string;
 }
 
@@ -10,13 +10,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        /* Añadido para asegurar que las luces tengan estilos visibles */
+        .light {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            display: inline-block;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .red { background-color: red; }
+        .green { background-color: green; }
+        .blue { background-color: blue; }
+        .yellow { background-color: yellow; }
+
+        .light.active {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Panel de Control de la Cabina</h2>
-            <p>¡Atención @nombreJugador! Deben seguir la secuencia de luces del panel de control. Recuerden que cada nivel tiene una combinación de colores distinta. El juego tiene 5 niveles, y en el último nivel deberán recordar y repetir una secuencia de 10 colores. ¡Buena suerte!</p>
-            
+            <p>¡Atención @nombreJugador! Deben seguir la secuencia de luces del panel de control. Recuerden que cada nivel tiene una combinación de colores distinta. El juego tiene 5 niveles, y en el último nivel deberán recordar y repetir una secuencia de 5 colores. ¡Buena suerte!</p>
+        
             <!-- Panel de control -->
             <div class="panel-control">
                 <div class="light red" data-color="red"></div>
@@ -37,9 +57,7 @@
             }
 
             <!-- Botón para comenzar -->
-            <button id="btn-comenzar" class="btn-start" onclick="comenzarJuego()">Comenzar</button>
-            <!-- Botón para saltar al nivel 10 -->
-            
+            <button id="btn-comenzar" class="btn-start">Comenzar</button>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -50,12 +68,9 @@
             let nivel = 1;
             let indexUsuario = 0;
 
-            function generarSecuencia() {
-                secuencia = [];
-                for (let i = 0; i < nivel; i++) {
-                    const colorAleatorio = colores[Math.floor(Math.random() * colores.length)];
-                    secuencia.push(colorAleatorio);
-                }
+            function agregarColorASecuencia() {
+                const colorAleatorio = colores[Math.floor(Math.random() * colores.length)];
+                secuencia.push(colorAleatorio);
             }
 
             function mostrarSecuencia() {
@@ -72,15 +87,21 @@
             }
 
             function iniciarNivel() {
-                generarSecuencia();
-                mostrarSecuencia();
+                agregarColorASecuencia();
+                setTimeout(mostrarSecuencia, 500); // Añadido un pequeño delay para mejor UX
                 indexUsuario = 0;
             }
 
             function comenzarJuego() {
                 $('#btn-comenzar').hide();
+                secuencia = [];
+                nivel = 1;
+                $('#nivel').text(nivel);
                 iniciarNivel();
             }
+
+            // Asignar evento al botón
+            $('#btn-comenzar').click(comenzarJuego);
 
             $('.light').click(function () {
                 const color = $(this).data('color');
@@ -97,6 +118,7 @@
                     }
                 } else {
                     alert('Error. Inténtalo nuevamente.');
+                    secuencia = [];
                     nivel = 1;
                     $('#nivel').text(nivel);
                     setTimeout(iniciarNivel, 1000);

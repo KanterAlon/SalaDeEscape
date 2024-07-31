@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Habitación 2";
+    ViewData["Title"] = "Habitación 3";
     string nombreJugador = ViewBag.NombreJugador as string;
 }
 
@@ -15,7 +15,12 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Identificación del Avión</h2>
-            <p>@nombreJugador, Has descubierto que el avión es de color amarillo. Ahora necesitas el código de la aerolínea. Dinos el nombre de la Aerolinea, en alfabeto aeronautico. A esta Aerolinea, en español, la llaman el eSPIRITu de los cielos..</p>
+            <p>@nombreJugador, has descubierto que el avión es de color amarillo. Ahora necesitas encontrar el código de la aerolínea. Para esto, sigue estos pasos:</p>
+            <ol>
+                <li>Descubre el nombre de la aerolínea. Pista: En español, la llaman "el eSPIRITu de los cielos".</li>
+                <li>Traduce el nombre de la aerolínea al alfabeto aeronáutico.</li>
+                <li>Escribe el nombre traducido al alfabeto aeronáutico, letra por letra, separadas por espacios, en el campo de texto a continuación.</li>
+            </ol>
             
             <!-- Elementos Multimedia -->
             <div class="multimedia">
@@ -47,7 +52,7 @@
             </div>
 
             <div id="pista2" class="pista-content">
-                <p>La aerolínea se llama Espiritu, traducido al Ingles.</p>
+                <p>La aerolínea se llama "Espiritu", traducido al inglés.</p>
             </div>
         </div>
     </div>

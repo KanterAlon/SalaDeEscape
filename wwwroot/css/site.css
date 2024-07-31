@@ -33,16 +33,19 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
   flex: 1; /* Asegura que la habitación ocupe el espacio disponible */
+  display: flex; /* Añadido */
+  justify-content: center; /* Añadido */
+  align-items: center; /* Añadido */
 }
 
-.container {
+.habitacion-container {
   width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 800px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 /* Sección de títulos y textos */
@@ -246,7 +249,6 @@ button[type="submit"]:hover {
 .habitacion-container {
   width: 90%;
   max-width: 800px;
-  margin: 20px auto;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
@@ -508,4 +510,17 @@ footer {
       transform: translateY(100vh);
       opacity: 0;
   }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.bounce-button {
+    animation: bounce 1s infinite;
 }

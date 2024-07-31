@@ -3,11 +3,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--los id de esta página sirven para cosas del js sobre el temporizador, y no tienen nada que ver con css o estilos-->
-
 <body class="Landing">
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <a href="https://docs.google.com/document/d/1wdMOXJ26CoH3ndt4CKpYzOjD_iCd9oB5aIzZn-CPUzo/edit" class="btn btn-primary-custom" target="_blank">Agregar Feedback</a>
+    </div>
     <div class="content-container">
-        <h1>Namalteufa</h1>
+        <h1 id="animated-title">Namalteufa</h1>
         <form method="post" action="@Url.Action("Comenzar", "Home")">
             <input type="text" name="jugador" placeholder="Ingresa tu nombre" required autocomplete="off">
             <label for="nivel">Selecciona el nivel:</label>
@@ -21,8 +22,8 @@
         <a class="btn btn-secondary-custom" href="@Url.Action("Tutorial", "Home")">Tutorial</a>
         <a class="btn btn-default-custom" href="@Url.Action("Creditos", "Home")">Creditos</a>
         <div class="button-container">
-            <button id="generate-airplane" class="btn btn-default-custom" style="margin-top: 40px;">Generar Avión</button>
-            <button id="generate-juli" class="btn btn-default-custom" style="margin-top: 40px;">Generar Juli Medina</button>
+            <button id="generate-airplane" class="btn btn-default-custom bounce-button" style="margin-top: 40px;">Generar Avión</button>
+            <button id="generate-juli" class="btn btn-default-custom bounce-button" style="margin-top: 40px;">Generar Juli Medina</button>
         </div>
         <img id="dingdong-bell" src="/img/bell.png" alt="Ding Dong Bell" style="cursor: pointer; width: 50px; height: 50px; margin-top: 20px;">
     </div>
@@ -151,4 +152,5 @@
             }
         });
     </script>
+    <script src="~/js/animateTitle.js"></script>
 </body>
