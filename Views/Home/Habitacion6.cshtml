@@ -15,7 +15,7 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Panel de Control de la Cabina</h2>
-            <p>¡Atención @nombreJugador! Deben seguir la secuencia de luces del panel de control. Recuerden que cada nivel tiene una combinación de colores distinta. El juego tiene 10 niveles, y en el último nivel deberán recordar y repetir una secuencia de 10 colores. ¡Buena suerte!</p>
+            <p>¡Atención @nombreJugador! Deben seguir la secuencia de luces del panel de control. Recuerden que cada nivel tiene una combinación de colores distinta. El juego tiene 5 niveles, y en el último nivel deberán recordar y repetir una secuencia de 10 colores. ¡Buena suerte!</p>
             
             <!-- Panel de control -->
             <div class="panel-control">
@@ -39,6 +39,7 @@
             <!-- Botón para comenzar -->
             <button id="btn-comenzar" class="btn-start" onclick="comenzarJuego()">Comenzar</button>
             <!-- Botón para saltar al nivel 10 -->
+            
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -88,7 +89,7 @@
                     if (indexUsuario === secuencia.length) {
                         nivel++;
                         $('#nivel').text(nivel);
-                        if (nivel > 10) {
+                        if (nivel > 5) {
                             window.location.href = '/Home/Victoria';
                         } else {
                             setTimeout(iniciarNivel, 1000);
