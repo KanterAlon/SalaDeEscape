@@ -81,6 +81,10 @@
       "PackagePath": "staticwebassets\\img\\ejemplo6.jpeg"
     },
     {
+      "Id": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\julimedina.png",
+      "PackagePath": "staticwebassets\\img\\julimedina.png"
+    },
+    {
       "Id": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\test.jpeg",
       "PackagePath": "staticwebassets\\img\\test.jpeg"
     },

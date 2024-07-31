@@ -15,7 +15,7 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Panel de Control de la Cabina</h2>
-            <p>¡Atención @nombreJugador! Deben seguir la secuencia de luces del panel de control. Recuerden la combinación y repítanla correctamente. ¡Buena suerte!</p>
+            <p>¡Atención @nombreJugador! Deben seguir la secuencia de luces del panel de control. Recuerden que cada nivel tiene una combinación de colores distinta. El juego tiene 10 niveles, y en el último nivel deberán recordar y repetir una secuencia de 10 colores. ¡Buena suerte!</p>
             
             <!-- Panel de control -->
             <div class="panel-control">
@@ -36,8 +36,9 @@
                 </div>
             }
 
+            <!-- Botón para comenzar -->
+            <button id="btn-comenzar" class="btn-start" onclick="comenzarJuego()">Comenzar</button>
             <!-- Botón para saltar al nivel 10 -->
-            <button class="btn-skip" onclick="saltarNivel10()">Saltar al Nivel 10</button>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -75,6 +76,11 @@
                 indexUsuario = 0;
             }
 
+            function comenzarJuego() {
+                $('#btn-comenzar').hide();
+                iniciarNivel();
+            }
+
             $('.light').click(function () {
                 const color = $(this).data('color');
                 if (color === secuencia[indexUsuario]) {
@@ -96,14 +102,6 @@
                 }
             });
 
-            window.saltarNivel10 = function() {
-                nivel = 10;
-                $('#nivel').text(nivel);
-                secuencia = [colores[Math.floor(Math.random() * colores.length)]]; // Generar una combinación de un color
-                mostrarSecuencia();
-            }
-
-            iniciarNivel();
         });
     </script>
 </body>

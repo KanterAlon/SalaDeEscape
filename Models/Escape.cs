@@ -4,7 +4,7 @@ public static class Escape
         "742", // Respuesta para sala 1
         "HELP", // Respuesta para sala 2
         "SIERRA PAPA INDIA ROMEO INDIA TANGO", // Respuesta para sala 3
-        "27", // Respuesta para sala 4
+        "PFR", // Respuesta para sala 4
         "450", // Respuesta para sala 5
         "x" // Respuesta para sala 6
     };

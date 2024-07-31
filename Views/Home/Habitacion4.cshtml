@@ -15,23 +15,19 @@
     <div class="Habitacion">
         <div class="habitacion-container">
             <h2>Enigma del Código IATA</h2>
-            <p>@nombreJugador, Debes resolver este enigma para determinar el código IATA de un importante aeropuerto internacional. Convierte cada letra del código IATA a su posición correspondiente en el alfabeto (A=1, B=2, ..., Z=26) y suma los valores para obtener el número final. ¡Buena suerte!</p>
+            <p>@nombreJugador, Debes resolver este enigma para determinar el código IATA de un importante aeropuerto internacional. ¡Buena suerte!</p>
             
             <!-- Elementos Multimedia -->
             <div class="multimedia">
-                <p>Pistas:</p>
+                <p>Pista:</p>
                 <ul>
-                    <li>El aeropuerto está en una ciudad que es un importante hub de aviación.</li>
-                    <li>El código IATA del aeropuerto tiene tres letras.</li>
-                    <li>La primera letra del código es la primera letra del nombre de la ciudad.</li>
-                    <li>La segunda letra del código es la tercera letra del nombre del país.</li>
-                    <li>La tercera letra del código es la última letra del nombre del aeropuerto.</li>
+                    <li>El código IATA del aeropuerto es la combinación de la primera letra de la ciudad y las dos primeras letras del nombre del país.</li>
                 </ul>
             </div>
             
             <!-- Formulario para descifrar la clave -->
             <form method="post" action="@Url.Action("Habitacion", "Home", new { sala = 4 })" autocomplete="off">
-                <input type="number" name="clave" placeholder="Ingresa el número final" required autocomplete="off">
+                <input type="text" name="clave" placeholder="Ingresa la combinacion final" required autocomplete="off">
                 <button type="submit">VALIDAR</button>
             </form>
 
@@ -57,11 +53,11 @@
                 method: 'POST'
             }).then(() => {
                 if (pista === 1) {
-                    alert('Pista 1: Piensa en los aeropuertos más importantes y conocidos.');
+                    alert('Pista 1: La primera letra del código es la inicial de la ciudad famosa por su Torre Eiffel.');
                 } else if (pista === 2) {
-                    alert('Pista 2: La ciudad es un hub de aviación en los Estados Unidos.');
+                    alert('Las dos siguientes letras son las iniciales del país conocido por su gastronomía y arte.');
                 } else {
-                    alert('Pista 3: Convierte las letras a números y suma sus valores.');
+                    alert('Combina la primera letra de la ciudad con las dos primeras letras del país.');
                 }
             });
         }
