@@ -1,10 +1,21 @@
 @{
     ViewData["Title"] = "Victoria";
-    int intentosExtras = ViewBag.IntentosExtras ?? 0;
-    int pistasUsadas = ViewBag.PistasUsadas ?? 0;
+
+    int intentosExtras = 0;
+    if (ViewBag.IntentosExtras != null)
+    {
+        intentosExtras = (int)ViewBag.IntentosExtras;
+    }
+
+    int pistasUsadas = 0;
+    if (ViewBag.PistasUsadas != null)
+    {
+        pistasUsadas = (int)ViewBag.PistasUsadas;
+    }
+
     string nombreJugador = ViewBag.NombreJugador as string;
 }
-
+//codigo cambiado, verificar funcionamiento 
 
 <!DOCTYPE html>
 <html>
