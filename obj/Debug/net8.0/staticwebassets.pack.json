@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\img\\Felipe.jpg"
     },
     {
+      "Id": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\airplane.png",
+      "PackagePath": "staticwebassets\\img\\airplane.png"
+    },
+    {
       "Id": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\avion_amarillo.jpeg",
       "PackagePath": "staticwebassets\\img\\avion_amarillo.jpeg"
     },
@@ -39,6 +43,10 @@
     {
       "Id": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\control_center_radio.jpg",
       "PackagePath": "staticwebassets\\img\\control_center_radio.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\dingdong.mp3",
+      "PackagePath": "staticwebassets\\img\\dingdong.mp3"
     },
     {
       "Id": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\ejemplo0.jpeg",

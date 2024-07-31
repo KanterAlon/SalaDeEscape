@@ -18,5 +18,120 @@
         </form>
         <a class="btn btn-secondary-custom" href="@Url.Action("Tutorial", "Home")">Tutorial</a>
         <a class="btn btn-default-custom" href="@Url.Action("Creditos", "Home")">Creditos</a>
+        <button id="generate-airplane" class="btn btn-default-custom" style="margin-top: 40px;">Generar Avión</button>
+        <img id="dingdong-bell" src="/img/bell.png" alt="Ding Dong Bell" style="cursor: pointer; width: 50px; height: 50px; margin-top: 20px;">
     </div>
+
+    <!-- Contenedor para los aviones generados -->
+    <div id="airplane-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const airplaneContainer = document.getElementById('airplane-container');
+            const generateAirplaneButton = document.getElementById('generate-airplane');
+            const dingdongBell = document.getElementById('dingdong-bell');
+            const dingdongAudio = new Audio('/img/dingdong.mp3');
+            let airplane = null;
+            let airplaneInterval = null;
+
+            generateAirplaneButton.addEventListener('click', () => {
+                if (airplane) {
+                    airplane.remove();
+                    clearInterval(airplaneInterval);
+                }
+                createAirplane();
+            });
+
+            dingdongBell.addEventListener('click', () => {
+                dingdongAudio.play();
+            });
+
+            function createAirplane() {
+                airplane = document.createElement('div');
+                airplane.classList.add('airplane');
+
+                const startX = Math.random() * window.innerWidth;
+                airplane.style.left = `${startX}px`;
+                airplane.style.top = `-100px`; // Start above the screen
+
+                airplaneContainer.appendChild(airplane);
+
+                airplane.addEventListener('click', () => {
+                    airplaneClickHandler(airplane);
+                });
+
+                moveAirplane(airplane);
+            }
+
+            function moveAirplane(airplane) {
+                let posX = parseFloat(airplane.style.left);
+                let posY = parseFloat(airplane.style.top);
+                let velX = (Math.random() - 0.5) * 4;
+                let velY = (Math.random() - 0.5) * 10;
+                const gravity = 0.5;
+                const bounce = 0.7;
+
+                airplaneInterval = setInterval(() => {
+                    posX += velX;
+                    posY += velY;
+                    velY += gravity;
+
+                    if (posX + airplane.clientWidth > window.innerWidth || posX < 0) {
+                        velX *= -bounce;
+                        posX = Math.max(0, Math.min(window.innerWidth - airplane.clientWidth, posX));
+                    }
+                    if (posY + airplane.clientHeight > window.innerHeight) {
+                        velY *= -bounce;
+                        posY = window.innerHeight - airplane.clientHeight;
+                        if (Math.abs(velY) < 1) {
+                            velY = 0;
+                            velX = 0;
+                            clearInterval(airplaneInterval);
+                        }
+                    }
+
+                    airplane.style.left = `${posX}px`;
+                    airplane.style.top = `${posY}px`;
+                }, 20);
+            }
+
+            function airplaneClickHandler(airplane) {
+                clearInterval(airplaneInterval); // Stop current movement
+                let velX = (Math.random() - 0.5) * 4;
+                let velY = -(Math.random() * 15 + 10); // Stronger upward force
+                let posX = parseFloat(airplane.style.left);
+                let posY = parseFloat(airplane.style.top);
+                const gravity = 0.5;
+                const bounce = 0.7;
+
+                airplaneInterval = setInterval(() => {
+                    if (!airplane) {
+                        clearInterval(airplaneInterval);
+                        return;
+                    }
+
+                    posX += velX;
+                    posY += velY;
+                    velY += gravity;
+
+                    if (posX + airplane.clientWidth > window.innerWidth || posX < 0) {
+                        velX *= -bounce;
+                        posX = Math.max(0, Math.min(window.innerWidth - airplane.clientWidth, posX));
+                    }
+                    if (posY + airplane.clientHeight > window.innerHeight) {
+                        velY *= -bounce;
+                        posY = window.innerHeight - airplane.clientHeight;
+                        if (Math.abs(velY) < 1) {
+                            velY = 0;
+                            velX = 0;
+                            clearInterval(airplaneInterval);
+                        }
+                    }
+
+                    airplane.style.left = `${posX}px`;
+                    airplane.style.top = `${posY}px`;
+                }, 20);
+            }
+        });
+    </script>
 </body>

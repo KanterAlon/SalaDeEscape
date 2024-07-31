@@ -419,3 +419,22 @@ footer {
   margin-bottom: 20px;
   color: #333;
 }
+/* Estilo para el avión interactivo */
+.airplane {
+  position: absolute;
+  width: 150px; /* Tamaño más grande del avión */
+  height: 150px; /* Tamaño más grande del avión */
+  background-image: url('/img/airplane.png'); /* Asegúrate de tener una imagen de avión en esta ruta */
+  background-size: contain; /* Asegura que la imagen no se corte */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  transition: transform 0.1s;
+}
+
+.airplane:active {
+  transform: scale(1.2);
+}
+
+/* Estilo para el botón "Generar Avión" */
+#generate-airplane {
+  margin-top: 40px;
+}

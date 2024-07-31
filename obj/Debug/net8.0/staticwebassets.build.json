@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "L7yT/42+Gz/gwjv0CjjQJuMny+1qeU1++UwH0AXT4Nw=",
+  "Hash": "HI2o2MLWRsU4FOj3TeL95deuutAidvRAqqj11fOUmVM=",
   "Source": "proyecto-sala-de-escape",
   "BasePath": "_content/proyecto-sala-de-escape",
   "Mode": "Default",
@@ -112,6 +112,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\airplane.png",
+      "SourceId": "proyecto-sala-de-escape",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\",
+      "BasePath": "_content/proyecto-sala-de-escape",
+      "RelativePath": "img/airplane.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\airplane.png"
+    },
+    {
       "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\Alfabeto_Aeronautico_Pista.jpeg",
       "SourceId": "proyecto-sala-de-escape",
       "SourceType": "Discovered",
@@ -205,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\control_center_radio.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\dingdong.mp3",
+      "SourceId": "proyecto-sala-de-escape",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\",
+      "BasePath": "_content/proyecto-sala-de-escape",
+      "RelativePath": "img/dingdong.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\dingdong.mp3"
     },
     {
       "Identity": "C:\\Users\\kante\\Downloads\\proyecto-sala-de-escape\\wwwroot\\img\\ejemplo0.jpeg",
